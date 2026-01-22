@@ -36,3 +36,13 @@
     @include h3-mobile("rem");
   }
 }
+
+.body-medium {
+  @include desktop {
+    @include body-medium-desktop("rem");
+  }
+
+  @include phone {
+    @include body-medium-mobile("rem");
+  }
+}

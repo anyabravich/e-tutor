@@ -1,7 +1,7 @@
 @use "./units" as *;
 
 @function d-unit($value, $unit) {
-  @if $unit == "fu" {
+  @if $unit =="fu" {
     @return fu($value);
   }
 
@@ -72,6 +72,20 @@
 }
 
 @mixin text-mobile($unit) {
+  font-weight: 500;
+  font-size: d-unit(16, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin body-medium-desktop($unit) {
+  font-weight: 500;
+  font-size: d-unit(20, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin body-medium-mobile($unit) {
   font-weight: 500;
   font-size: d-unit(16, $unit);
   line-height: 1.2;

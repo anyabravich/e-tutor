@@ -75,6 +75,7 @@ textarea {
 
 // ie11 X removal
 input {
+
   &::-ms-clear,
   &::-ms-reveal {
     display: none;
@@ -143,4 +144,8 @@ table {
   th {
     text-align: left;
   }
+}
+
+ul {
+  @include reset-ul;
 }

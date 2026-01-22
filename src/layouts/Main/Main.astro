@@ -2,6 +2,7 @@
 import RootLayout from '@layouts/root/root'
 import Header from '@components/Header/Header'
 import Footer from '@components/Footer/Footer'
+import Nav from '@/components/Nav/Nav.astro'
 
 interface Props {
   title: string
@@ -11,6 +12,7 @@ const { title } = Astro.props
 ---
 
 <RootLayout title={title}>
+  <Nav />
   <Header title={title} />
 
   <main class="page__main">

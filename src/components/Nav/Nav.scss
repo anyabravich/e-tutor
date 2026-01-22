@@ -1,0 +1,18 @@
+@use "@styles/shared" as *;
+
+.nav {
+    color: var(--color-white);
+    background: var(--color-grey-900);
+    padding-inline: rem(32);
+}
+
+.menu {
+    display: flex;
+    gap: rem(8);
+
+    &__link {
+        display: block;
+        padding: rem(16);
+        text-decoration: none;
+    }
+}

@@ -1,16 +1,13 @@
 ---
 import Container from '@components/Container/Container'
 import Title from '@ui/Title/Title'
-
-interface Props {
-  title: string
-}
+import type { Props } from './Header.types'
 
 const { title } = Astro.props
 ---
 
 <header class="header">
   <Container className={'header__container'}>
-    <Title className="header__title" size="lg" text={title} />
+    <p>Header</p>
   </Container>
 </header>
