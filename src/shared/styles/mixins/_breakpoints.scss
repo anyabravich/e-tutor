@@ -1,0 +1,25 @@
+@use "../global/constants" as *;
+
+@mixin desktop {
+  @media (min-width: ($breakpoint-phone + 0.01)) {
+    @content;
+  }
+}
+
+@mixin phone {
+  @media (max-width: $breakpoint-phone) {
+    @content;
+  }
+}
+
+@mixin portrait {
+  @media (orientation: portrait) {
+    @content;
+  }
+}
+
+@mixin landscape {
+  @media (orientation: landscape) {
+    @content;
+  }
+}

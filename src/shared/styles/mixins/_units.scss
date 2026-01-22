@@ -1,0 +1,25 @@
+@use "sass:math";
+@use "sass:meta";
+
+$font-size: 16;
+$min-fu: 0.5px;
+
+@function rem($px) {
+  @return #{math.div($px, $font-size)}rem;
+}
+
+@function vw($px, $width: 1920) {
+  @return calc(math.round(calc($px / $width) * 100vw * 10000) / 10000);
+}
+
+@function vh($px, $height: 1080) {
+  @return calc(math.round(calc($px / $height) * 100vh * 10000) / 10000);
+}
+
+@function svh($px) {
+  @return calc(#{$px} * var(--svh));
+}
+
+@function fu($px) {
+  @return calc(#{$px} * var(--fu));
+}

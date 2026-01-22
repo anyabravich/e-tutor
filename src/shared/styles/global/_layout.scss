@@ -1,0 +1,58 @@
+@use "../shared" as *;
+@use "sass:math";
+@use "./settings" as *;
+
+:root {
+  --container-width: min(
+    #{rem($container-width)},
+    100% - (var(--container-padding) * 2)
+  );
+
+  @include desktop {
+    --container-padding-static: #{rem(40)};
+    --container-padding: var(--container-padding-static);
+    --header-height: #{fu(120)};
+    --fu: max(
+      min(
+        #{math.div($container-max-width, $figma-desktop-w)}px,
+        #{$desktop-vw},
+        #{$desktop-svh}
+      ),
+      #{$min-fu}
+    );
+    font-size: min(
+      vw($font-size, $figma-desktop-w),
+      #{math.div($container-max-width, $figma-desktop-w) * $font-size}px
+    );
+
+    @media (min-width: #{$container-max-width}px) {
+      --container-padding: calc(
+        (100vw - #{$container-max-width}px) / 2 +
+          var(--container-padding-static)
+      );
+    }
+  }
+
+  @include phone {
+    --container-padding-static: #{rem(20)};
+    --container-padding: var(--container-padding-static);
+    --header-height: #{fu(80)};
+    --fu: max(min(#{$phone-vw}, #{$phone-svh}), #{$min-fu});
+
+    font-size: min(vw($font-size, $figma-phone-w), 20px);
+
+    @include landscape {
+      font-size: 16px;
+
+      --fu: 1px;
+    }
+  }
+}
+
+.page {
+  &__body {
+    display: grid;
+    min-height: 100vh;
+    grid-template-rows: auto 1fr auto;
+  }
+}

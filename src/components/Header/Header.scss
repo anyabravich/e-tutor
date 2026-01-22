@@ -1,0 +1,19 @@
+@use "@styles/shared" as *;
+
+.header {
+  padding: rem(12) 0;
+
+  &__container {
+    display: flex;
+    justify-content: center;
+  }
+
+  &__logo-icon {
+    width: rem(64);
+    height: rem(42);
+  }
+
+  &__title {
+    justify-self: center;
+  }
+}

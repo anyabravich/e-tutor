@@ -1,0 +1,20 @@
+---
+import type { HTMLAttributes } from 'astro/types'
+import { file, type SymbolId } from 'virtual:astro-svg'
+
+interface Props extends HTMLAttributes<'svg'> {
+  name: SymbolId;
+  className?: string
+}
+
+const { name, className, ...attr } = Astro.props
+---
+
+<svg
+  class:list={['icon', `icon-${name}`, className || '']}
+  aria-hidden="true"
+  focusable="false"
+  {...attr}
+>
+  <use xlink:href={`${file}#${name}`}></use>
+</svg>

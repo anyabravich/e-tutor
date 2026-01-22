@@ -1,0 +1,23 @@
+@mixin with-touch() {
+  @media (pointer: coarse) {
+    @content;
+  }
+}
+
+@mixin with-mouse() {
+  @media (pointer: fine) {
+    @content;
+  }
+}
+
+@mixin no-reduce-motion() {
+  @media (prefers-reduced-motion: no-preference) {
+    @content;
+  }
+}
+
+@mixin has-reduce-motion() {
+  @media (prefers-reduced-motion: reduce) {
+    @content;
+  }
+}

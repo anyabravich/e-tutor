@@ -1,0 +1,6 @@
+@use "@styles/shared" as *;
+
+.container {
+  margin-inline: auto;
+  width: var(--container-width);
+}

@@ -1,0 +1,20 @@
+@use "sass:math";
+@use "./constants" as *;
+@use "../mixins" as *;
+
+// Container
+$container-max-width: 2400;
+$container-width: 1280;
+
+// Figma sizes in pixels
+$figma-desktop-w: 1440;
+$figma-desktop-h: 900;
+$figma-phone-w: 375;
+$figma-phone-h: 667;
+
+$desktop-vw: vw(1, $figma-desktop-w);
+$desktop-vh: vh(1, $figma-desktop-h);
+$desktop-svh: calc(#{calc(1 / $figma-desktop-h * 100)} * var(--svh));
+$phone-vw: vw(1, $figma-phone-w);
+$phone-vh: vh(1, $figma-phone-h);
+$phone-svh: calc(#{calc(1 / $figma-phone-h * 100)} * var(--svh));

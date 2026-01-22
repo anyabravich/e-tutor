@@ -1,0 +1,114 @@
+---
+import 'src/shared/styles/index.scss'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<!doctype html>
+<html class="page" lang="ru">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0" />
+
+    <title>{title}</title>
+    <meta name="description" content="Astro description" />
+
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="AstroTemplate" />
+    <link rel="manifest" href="/site.webmanifest" />
+
+    <meta property="og:image" content="https://placehold.co/1200x630" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    {/* <link rel="preload" href="/assets/fonts/some-font.woff2" as="font" type="font/woff2" crossorigin /> */}
+
+    <script is:inline>
+      (function () {
+        const modificators = []
+        const nv = navigator
+        const pl = nv.platform.toLowerCase()
+        const ua = nv.userAgent.toLowerCase()
+        const an = nv.appName.toLowerCase()
+        const htmlElement = document.documentElement
+
+        function pli(s) {
+          return pl.indexOf(s) > -1
+        }
+        function uai(s) {
+          return ua.indexOf(s) > -1
+        }
+        function ani(s) {
+          return an.indexOf(s) > -1
+        }
+
+        const platformClass =
+            uai('iphone') ||
+            uai('ipod') ||
+            uai('ipad') ||
+            uai('android') ||
+            uai('iemobile') ||
+            uai('blackberry') ||
+            uai('bada')
+              ? '_mobile'
+              : '_desktop'
+        modificators.push(platformClass)
+
+        let osClass = ''
+        if (uai('ipad') || uai('iphone') || uai('ipod')) {
+          osClass = '_ios'
+        } else if (uai('android')) {
+          osClass = '_android'
+        } else if (pli('win')) {
+          osClass = '_win'
+        } else if (pli('mac')) {
+          osClass = '_mac'
+        } else if (pli('linux')) {
+          osClass = '_linux'
+        }
+        modificators.push(osClass)
+
+        let browserClass = ''
+        if (uai('firefox')) {
+          browserClass = '_ff'
+        } else if (uai('opr')) {
+          browserClass = '_opera'
+        } else if (uai('yabrowser')) {
+          browserClass = '_yandex'
+        } else if (uai('edge')) {
+          browserClass = '_edge'
+        } else if (uai('trident') || ani('explorer') || ani('msie')) {
+          browserClass = '_ie'
+        } else if (uai('safari') && !uai('chrome')) {
+          browserClass = '_safari'
+        } else if (uai('chrome')) {
+          browserClass = '_chrome'
+        }
+        modificators.push(browserClass)
+
+        window.envObject = {
+          platform: platformClass,
+          os: osClass,
+          browser: browserClass,
+          isLocal: window.location.href.includes('localhost'),
+          assetsPath: '/assets',
+        }
+        htmlElement.className += ' ' + modificators.join(' ')
+      })()
+    </script>
+
+    <script src="/src/shared/scripts/index.js"></script>
+  </head>
+  <body class="page__body">
+    <slot />
+  </body>
+</html>

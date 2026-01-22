@@ -1,0 +1,59 @@
+@use "./device" as *;
+@use "../global/constants" as *;
+
+@mixin hover() {
+  &:hover {
+    @content;
+  }
+}
+
+@mixin mouse-hover() {
+  @include with-mouse {
+    @include hover {
+      @content;
+    }
+  }
+}
+
+@mixin keyboard-focus {
+  &:focus-visible {
+    @content;
+  }
+}
+
+@mixin mouse-hover-focus() {
+  @include with-mouse {
+    @include hover {
+      @content;
+    }
+
+    @include keyboard-focus {
+      @content;
+    }
+  }
+}
+
+@mixin transition-active() {
+  transition:
+    opacity $default-transition,
+    color $default-transition,
+    background $default-transition,
+    border-color $default-transition;
+}
+
+@mixin transition-hover() {
+  transition: none;
+}
+
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  border: 0;
+  padding: 0;
+  white-space: nowrap;
+  clip-path: inset(100%);
+  clip: rect(0 0 0 0);
+  overflow: hidden;
+}

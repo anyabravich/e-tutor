@@ -1,0 +1,23 @@
+---
+import type { HTMLTag, Polymorphic } from 'astro/types'
+
+type Props<Tag extends HTMLTag> = Polymorphic<{ as: Tag }> & {
+  text: string
+  className?: string
+  mods?: string[]
+  size?: 'xl' | 'lg' | 'md' | 'sm' | 'xs' | 'xxs'
+}
+
+const { as: Tag = 'h1', text, className, size, mods, ...props } = Astro.props
+---
+
+<Tag
+  class:list={[
+    'title',
+    size && `_${size}`,
+    mods?.map((el: string) => `_${el}`),
+    className
+  ]}
+  {...props}
+  set:html={text}
+/>

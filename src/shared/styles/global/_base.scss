@@ -1,0 +1,146 @@
+@use "../mixins" as *;
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: rgb(0 0 0 / 0%);
+}
+
+html,
+body {
+  color: var(--color-text);
+  background-color: var(--color-background);
+  cursor: default;
+  scroll-behavior: smooth;
+
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  // оптимизация выравнивания шрифта относительно центра строки
+  text-rendering: optimizeLegibility;
+  // если по прежнему есть проблемы с выравниванием
+  // https://transfonter.org/ - включите настройку https://prnt.sc/12rnt6g и переконвертируйте шрифт
+}
+
+body {
+  font-family: var(--default-font-family);
+  font-size: var(--default-font-size);
+  line-height: var(--default-line-height);
+  font-weight: var(--default-font-weight);
+  font-style: var(--default-font-style);
+}
+
+a {
+  color: inherit;
+  text-underline-offset: 0.2em;
+  text-decoration-thickness: 1px;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
+
+img,
+video {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// chrome autofill background removal
+// если на проекте у инпутов используются разные цвета фонов\текста -
+// удалите это из глобала и используйте локально с нужными цветами
+// rgba не подойдет, сконвертируйте цвет в hex без прозрачности
+// если в стилях уже используется box-shadow есть другое решение -
+// задать к списку транзишенов `background-color 10000000s ease-out`
+input:-webkit-autofill {
+  box-shadow: inset 0 0 0 1000px var(--color-white);
+
+  -webkit-text-fill-color: var(--color-black);
+}
+
+// firefox placeholder \ invalid fix + ios bdrs
+input,
+textarea {
+  &::placeholder {
+    opacity: 1;
+  }
+
+  &:invalid {
+    box-shadow: none;
+  }
+}
+
+// ie11 X removal
+input {
+  &::-ms-clear,
+  &::-ms-reveal {
+    display: none;
+  }
+}
+
+// chrome search X removal
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  appearance: none;
+}
+
+// input[number] arrows removal
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  margin: 0;
+  appearance: none;
+}
+
+input[type="number"] {
+  appearance: textfield;
+}
+
+// без этого на Samsung в хроме есть стрелка, и она прилипает к правому краю
+input[type="date"],
+input[type="month"],
+input[type="time"] {
+  appearance: none;
+}
+
+// ios button \ inputs reset
+select,
+textarea,
+input {
+  @include reset-input;
+  font-family: var(--default-font-family);
+}
+
+button,
+[type="button"],
+[type="reset"],
+[type="submit"] {
+  @include reset-button;
+}
+
+img,
+fieldset {
+  border: 0;
+}
+
+::selection {
+  background: #5f5f5f;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+::-moz-selection {
+  background: #5f5f5f;
+  color: #ffffff;
+  text-shadow: none;
+}
+
+table {
+  th {
+    text-align: left;
+  }
+}

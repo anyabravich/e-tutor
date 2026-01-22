@@ -1,0 +1,9 @@
+@use "@styles/shared" as *;
+
+.text {
+  position: relative;
+
+  > * + * {
+    margin-top: 0.8em;
+  }
+}

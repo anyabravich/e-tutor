@@ -1,0 +1,35 @@
+---
+import MainLayout from '@layouts/Main/Main'
+import Container from '@components/Container/Container'
+import { PAGES } from '@shared/const/'
+---
+
+<MainLayout title="Sitemap">
+  <div class="sitemap">
+    <Container>
+      <ol>
+        {
+          PAGES.map((item) => (
+            <li>
+              <a href={item.href}>{item.name}</a>
+            </li>
+          ))
+        }
+      </ol>
+    </Container>
+  </div>
+</MainLayout>
+
+<style lang="scss">
+  .sitemap {
+    ol {
+      margin-block: 1rem;
+      padding-left: 1rem;
+      list-style: decimal;
+
+      li + li{
+        margin-top: 0.5rem;
+      }
+    }
+  }
+</style>

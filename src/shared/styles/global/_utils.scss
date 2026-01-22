@@ -1,0 +1,36 @@
+/* stylelint-disable declaration-no-important */
+@use "../mixins" as *;
+
+.visually-hidden {
+  @include visually-hidden;
+}
+
+.hide-desktop {
+  @include desktop {
+    display: none !important;
+  }
+}
+
+.hide-phone {
+  @include phone {
+    display: none !important;
+  }
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+
+.fullsize-img {
+  @include absolute-fullsize;
+
+  object-fit: cover;
+}
+
+.animated {
+  @include transition-active;
+
+  @include mouse-hover {
+    @include transition-hover;
+  }
+}

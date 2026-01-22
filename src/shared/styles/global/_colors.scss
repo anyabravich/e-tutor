@@ -1,0 +1,27 @@
+@use "sass:math";
+@use "sass:color";
+
+// Если нет палитры от дизайнера,
+// то для нейминга цветов используем
+// https://www.htmlcsscolor.com/hex/334482
+
+$colors: (
+  "background": #fafafa,
+  "text": #333333,
+  "black": #000000,
+  "white": #ffffff,
+  "grey": #f5f5f5,
+  "blue": #0070f3
+);
+
+@function hex-to-rgb($hex) {
+  @return color.channel($hex, "red"), color.channel($hex, "green"),
+    color.channel($hex, "blue");
+}
+
+:root {
+  @each $key, $value in $colors {
+    --color-#{$key}: #{$value};
+    --color-#{$key}--rgb: #{hex-to-rgb($value)};
+  }
+}

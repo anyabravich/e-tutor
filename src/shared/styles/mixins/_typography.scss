@@ -1,0 +1,79 @@
+@use "./units" as *;
+
+@function d-unit($value, $unit) {
+  @if $unit == "fu" {
+    @return fu($value);
+  }
+
+  @return rem($value);
+}
+
+@mixin h1-desktop($unit) {
+  font-weight: 800;
+  font-size: d-unit(200, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin h1-mobile($unit) {
+  font-weight: 800;
+  font-size: d-unit(44, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin h2-desktop($unit) {
+  font-weight: 500;
+  font-size: d-unit(120, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin h2-mobile($unit) {
+  font-weight: 500;
+  font-size: d-unit(36, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin h3-desktop($unit) {
+  font-weight: 500;
+  font-size: d-unit(48, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin h3-mobile($unit) {
+  font-weight: 500;
+  font-size: d-unit(28, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin h4-desktop($unit) {
+  font-weight: 500;
+  font-size: d-unit(36, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin h4-mobile($unit) {
+  font-weight: 500;
+  font-size: d-unit(22, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin text-desktop($unit) {
+  font-weight: 500;
+  font-size: d-unit(20, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+@mixin text-mobile($unit) {
+  font-weight: 500;
+  font-size: d-unit(16, $unit);
+  line-height: 1.2;
+  letter-spacing: 0;
+}

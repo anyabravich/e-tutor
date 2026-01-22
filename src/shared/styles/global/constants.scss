@@ -1,0 +1,17 @@
+// Высота без учета bar в android, ios
+// Для устранения бага в андроид @see https://css-tricks.com/the-trick-to-viewport-units-on-mobile/
+$height-100vh: calc(100 * var(--vh, 1vh));
+
+// Breakpoints
+$breakpoint-phone: 768px;
+
+// Transitions
+$easing: cubic-bezier(0.33, 1, 0.68, 1);
+$s-transition-duration: 0.15s;
+$m-transition-duration: 0.3s;
+$l-transition-duration: 0.6s;
+$xl-transition-duration: 1s;
+$fast-transition: $s-transition-duration $easing;
+$default-transition: $m-transition-duration $easing;
+$long-transition: $l-transition-duration $easing;
+$super-long-transition: $xl-transition-duration $easing;

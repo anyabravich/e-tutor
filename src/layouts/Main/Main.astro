@@ -1,0 +1,21 @@
+---
+import RootLayout from '@layouts/root/root'
+import Header from '@components/Header/Header'
+import Footer from '@components/Footer/Footer'
+
+interface Props {
+  title: string
+}
+
+const { title } = Astro.props
+---
+
+<RootLayout title={title}>
+  <Header title={title} />
+
+  <main class="page__main">
+    <slot />
+  </main>
+
+  <Footer />
+</RootLayout>
