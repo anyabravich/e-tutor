@@ -1,13 +1,46 @@
 ---
 import Container from '@components/Container/Container'
-import Title from '@ui/Title/Title'
-import type { Props } from './Header.types'
-
-const { title } = Astro.props
+import LangSelector from '@ui/LangSelector/LangSelector'
 ---
 
 <header class="header">
-  <Container className={'header__container'}>
-    <p>Header</p>
+  <Container className="header__container">
+    <a href="/" class="header__logo">
+      <span class="header__logo-icon">📚</span>
+      <span class="header__logo-text">e-tutor</span>
+    </a>
+    
+    <nav class="header__nav" id="header-nav">
+      <ul class="header__nav-list">
+        <li class="header__nav-item">
+          <a href="#features" class="header__nav-link" data-i18n="nav.features">Features</a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#courses" class="header__nav-link" data-i18n="nav.courses">Courses</a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#testimonials" class="header__nav-link" data-i18n="nav.testimonials">Testimonials</a>
+        </li>
+        <li class="header__nav-item">
+          <a href="#" class="header__nav-link" data-i18n="nav.pricing">Pricing</a>
+        </li>
+      </ul>
+      
+      <div class="header__nav-actions">
+        <LangSelector defaultLang="en" />
+      </div>
+    </nav>
+    
+    <div class="header__actions">
+      <LangSelector defaultLang="en" mods={['compact']} />
+    </div>
+    
+    <button class="header__burger" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="header-nav">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
   </Container>
 </header>
+
+<script src="./Header.ts"></script>

@@ -11,6 +11,7 @@ type Props<Tag extends HTMLTag> = Polymorphic<
     icon?: string
     iconPosBefore?: boolean
     modal?: string
+    'data-i18n'?: string
   }
 >
 
@@ -23,6 +24,7 @@ const {
   icon,
   iconPosBefore,
   modal,
+  'data-i18n': i18nKey,
   ...props
 } = Astro.props
 ---
@@ -30,8 +32,8 @@ const {
 <Tag
   class:list={[
     'button',
-    size ? `button--${size}` : '',
-    mods?.map((el: string) => `button--${el}`),
+    size ? `_${size}` : '',
+    mods?.map((el: string) => `_${el}`),
     className
   ]}
   data-open-modal={modal}
@@ -45,7 +47,7 @@ const {
     )
   }
 
-  <span class="button__text" set:html={text} />
+  <span class="button__text" data-i18n={i18nKey} set:html={text} />
 
   {
     icon && !iconPosBefore && (

@@ -1,17 +1,52 @@
 @use "sass:math";
 @use "sass:color";
 
-// Если нет палитры от дизайнера,
-// то для нейминга цветов используем
-// https://www.htmlcsscolor.com/hex/334482
-
+// Яркая современная палитра для e-tutor
 $colors: (
+  // Base
   "background": #fafafa,
-  "text": #333333,
+  "text": #1a1a2e,
   "black": #000000,
   "white": #ffffff,
-  "grey-900": #1D2026,
-  "blue": #0070f3
+  
+  // Primary - яркий фиолетовый/индиго
+  "primary": #6366f1,
+  "primary-light": #818cf8,
+  "primary-dark": #4f46e5,
+  
+  // Secondary - яркий розовый/маджента
+  "secondary": #ec4899,
+  "secondary-light": #f472b6,
+  "secondary-dark": #db2777,
+  
+  // Accent - яркий голубой
+  "accent": #06b6d4,
+  "accent-light": #22d3ee,
+  "accent-dark": #0891b2,
+  
+  // Success - изумрудный
+  "success": #10b981,
+  "success-light": #34d399,
+  
+  // Warning - янтарный
+  "warning": #f59e0b,
+  "warning-light": #fbbf24,
+  
+  // Gradients base
+  "gradient-start": #6366f1,
+  "gradient-end": #ec4899,
+  
+  // Neutrals
+  "grey-50": #f8fafc,
+  "grey-100": #f1f5f9,
+  "grey-200": #e2e8f0,
+  "grey-300": #cbd5e1,
+  "grey-400": #94a3b8,
+  "grey-500": #64748b,
+  "grey-600": #475569,
+  "grey-700": #334155,
+  "grey-800": #1e293b,
+  "grey-900": #0f172a
 );
 
 @function hex-to-rgb($hex) {
@@ -24,4 +59,10 @@ $colors: (
     --color-#{$key}: #{$value};
     --color-#{$key}--rgb: #{hex-to-rgb($value)};
   }
+  
+  // Градиенты
+  --gradient-primary: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+  --gradient-accent: linear-gradient(135deg, var(--color-accent) 0%, var(--color-primary) 100%);
+  --gradient-warm: linear-gradient(135deg, var(--color-secondary) 0%, var(--color-warning) 100%);
+  --gradient-cool: linear-gradient(135deg, var(--color-accent) 0%, var(--color-success) 100%);
 }

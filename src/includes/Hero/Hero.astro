@@ -1,0 +1,72 @@
+---
+import Container from '@components/Container/Container'
+import Button from '@ui/Button/Button'
+import heroImage from '@images/hero-image.avif'
+---
+
+<section class="hero">
+  <div class="hero__bg">
+    <div class="hero__blob _item-1"></div>
+    <div class="hero__blob _item-2"></div>
+    <div class="hero__blob _item-3"></div>
+  </div>
+  
+  <Container className="hero__container">
+    <div class="hero__content">
+      <span class="hero__badge" data-i18n="hero.badge">New Learning Experience</span>
+      <h1 class="hero__title">
+        <span data-i18n="hero.title">Master New Skills with</span>
+        <span class="hero__title-gradient" data-i18n="hero.titleGradient">Expert Tutors</span>
+      </h1>
+      <p class="hero__text" data-i18n="hero.text">
+        Transform your future with personalized online education. 
+        Learn from world-class instructors and join millions of students 
+        achieving their dreams.
+      </p>
+      <div class="hero__actions">
+        <Button as="a" href="#courses" text="Explore Courses" mods={['fill', 'lg']} data-i18n="hero.btnExplore" />
+        <Button as="a" href="#features" text="Learn More" mods={['outline', 'lg']} data-i18n="hero.btnLearn" />
+      </div>
+      <ul class="hero__stats">
+        <li class="hero__stat">
+          <span class="hero__stat-value">50K+</span>
+          <span class="hero__stat-label" data-i18n="hero.stats.students">Active Students</span>
+        </li>
+        <li class="hero__stat">
+          <span class="hero__stat-value">200+</span>
+          <span class="hero__stat-label" data-i18n="hero.stats.tutors">Expert Tutors</span>
+        </li>
+        <li class="hero__stat">
+          <span class="hero__stat-value">500+</span>
+          <span class="hero__stat-label" data-i18n="hero.stats.courses">Courses</span>
+        </li>
+      </ul>
+    </div>
+    
+    <div class="hero__visual">
+      <div class="hero__image-wrapper">
+        <img 
+          src={heroImage.src} 
+          alt="Students learning together"
+          class="hero__image"
+          loading="eager"
+          data-i18n-alt="hero.imageAlt"
+        />
+        <div class="hero__floating-card _item-1">
+          <div class="hero__card-icon">🎯</div>
+          <div class="hero__card-content">
+            <span class="hero__card-title" data-i18n="hero.card1Title">Goal Achieved!</span>
+            <span class="hero__card-text" data-i18n="hero.card1Text">Python Mastery</span>
+          </div>
+        </div>
+        <div class="hero__floating-card _item-2">
+          <div class="hero__card-icon">⭐</div>
+          <div class="hero__card-content">
+            <span class="hero__card-title" data-i18n="hero.card2Title">4.9 Rating</span>
+            <span class="hero__card-text" data-i18n="hero.card2Text">12,000+ reviews</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </Container>
+</section>

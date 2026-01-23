@@ -1,0 +1,68 @@
+---
+import Container from '@components/Container/Container'
+import testimonial1 from '@images/testimonial-1.avif'
+import testimonial2 from '@images/testimonial-2.avif'
+import testimonial3 from '@images/testimonial-3.avif'
+---
+
+<section class="testimonials" id="testimonials">
+  <div class="testimonials__bg">
+    <div class="testimonials__blob _item-1"></div>
+    <div class="testimonials__blob _item-2"></div>
+  </div>
+  
+  <Container className="testimonials__container">
+    <div class="testimonials__header">
+      <span class="testimonials__badge" data-i18n="testimonials.badge">Testimonials</span>
+      <h2 class="testimonials__title">
+        <span data-i18n="testimonials.title">What Our Students</span>
+        <span class="testimonials__title-gradient" data-i18n="testimonials.titleGradient">Say About Us</span>
+      </h2>
+      <p class="testimonials__subtitle" data-i18n="testimonials.subtitle">
+        Join thousands of satisfied learners who have transformed their careers with us.
+      </p>
+    </div>
+    
+    <ul class="testimonials__grid">
+      <li class="testimonials__card">
+        <div class="testimonials__card-rating" aria-label="Rating: 5 out of 5" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+        <blockquote class="testimonials__card-text" data-i18n="testimonials.items.jessica.text">
+          This platform completely transformed my career. The courses are well-structured, and the instructors are incredibly supportive. I landed my dream job within 3 months!
+        </blockquote>
+        <figure class="testimonials__card-author">
+          <img src={testimonial1.src} alt="" class="testimonials__card-avatar" loading="lazy" />
+          <figcaption class="testimonials__card-info">
+            <cite class="testimonials__card-name" data-i18n="testimonials.items.jessica.name">Jessica Williams</cite>
+            <span class="testimonials__card-role" data-i18n="testimonials.items.jessica.role">Software Developer at Google</span>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="testimonials__card">
+        <div class="testimonials__card-rating" aria-label="Rating: 5 out of 5" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+        <blockquote class="testimonials__card-text" data-i18n="testimonials.items.david.text">
+          The UI/UX course was exactly what I needed. Practical projects, real feedback, and an amazing community. Worth every penny and more!
+        </blockquote>
+        <figure class="testimonials__card-author">
+          <img src={testimonial2.src} alt="" class="testimonials__card-avatar" loading="lazy" />
+          <figcaption class="testimonials__card-info">
+            <cite class="testimonials__card-name" data-i18n="testimonials.items.david.name">David Chen</cite>
+            <span class="testimonials__card-role" data-i18n="testimonials.items.david.role">UX Designer at Apple</span>
+          </figcaption>
+        </figure>
+      </li>
+      <li class="testimonials__card">
+        <div class="testimonials__card-rating" aria-label="Rating: 5 out of 5" aria-hidden="true">⭐⭐⭐⭐⭐</div>
+        <blockquote class="testimonials__card-text" data-i18n="testimonials.items.emma.text">
+          I tried many online platforms, but none compare to this. The quality of content and the learning experience is unmatched. Highly recommended!
+        </blockquote>
+        <figure class="testimonials__card-author">
+          <img src={testimonial3.src} alt="" class="testimonials__card-avatar" loading="lazy" />
+          <figcaption class="testimonials__card-info">
+            <cite class="testimonials__card-name" data-i18n="testimonials.items.emma.name">Emma Thompson</cite>
+            <span class="testimonials__card-role" data-i18n="testimonials.items.emma.role">Data Scientist at Netflix</span>
+          </figcaption>
+        </figure>
+      </li>
+    </ul>
+  </Container>
+</section>

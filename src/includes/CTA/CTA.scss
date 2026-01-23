@@ -1,0 +1,103 @@
+@use "@styles/shared" as *;
+
+.cta {
+  position: relative;
+  padding: rem(100) 0;
+  background: var(--gradient-primary);
+  overflow: hidden;
+
+  @include phone {
+    padding: rem(60) 0;
+  }
+
+  &__container {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__content {
+    max-width: rem(700);
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__title {
+    margin-bottom: rem(20);
+    font-size: clamp(rem(32), 4vw, rem(48));
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-white);
+
+    &-gradient {
+      display: block;
+      background: linear-gradient(135deg, var(--color-white) 0%, rgba(255, 255, 255, 0.7) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__text {
+    margin-bottom: rem(32);
+    font-size: rem(18);
+    line-height: 1.7;
+    color: rgba(255, 255, 255, 0.9);
+
+    @include phone {
+      font-size: rem(16);
+    }
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: center;
+    gap: rem(16);
+    margin-bottom: rem(24);
+
+    @include phone {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+
+  &__note {
+    font-size: rem(14);
+    color: rgba(255, 255, 255, 0.7);
+  }
+
+  &__decoration {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    overflow: hidden;
+  }
+
+  &__circle {
+    position: absolute;
+    border-radius: 50%;
+    border: rem(2) solid rgba(255, 255, 255, 0.1);
+
+    &._item-1 {
+      top: -10%;
+      left: -5%;
+      width: rem(350);
+      height: rem(350);
+    }
+
+    &._item-2 {
+      bottom: -15%;
+      right: -8%;
+      width: rem(450);
+      height: rem(450);
+    }
+
+    &._item-3 {
+      top: 50%;
+      left: 50%;
+      width: rem(250);
+      height: rem(250);
+      transform: translate(-50%, -50%);
+      border-width: rem(1);
+    }
+  }
+}

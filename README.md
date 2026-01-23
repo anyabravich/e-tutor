@@ -1,183 +1,335 @@
-# Гайд по работе со сборкой
+# E-Tutor
 
-Для начала работы у вас должент быть установлен Node.js 22
+> Modern online education platform landing page
 
-## 🚀 Структура проекта
+<p align="center">
+  <img src="./public/favicon.svg" alt="E-Tutor Logo" width="80" height="80">
+</p>
 
-Используется модульная архитектура
+<p align="center">
+  <a href="#-about">About</a> •
+  <a href="#-demo">Demo</a> •
+  <a href="#-tech-stack">Tech Stack</a> •
+  <a href="#-features">Features</a> •
+  <a href="#-getting-started">Getting Started</a> •
+  <a href="#-project-structure">Project Structure</a> •
+  <a href="#-scripts">Scripts</a>
+</p>
 
-Нижележащий слой может испльзоваться только в слоях стоящих выше по иерархии
+---
 
-### `shared 🡒 ui 🡒 components 🡒 includes 🡒 pages`
+## 📖 About
 
-```text
-├── public/                 # статические файлы (шрифты, фавиконки и тп.)
-│   ├── assets/fonts/
-│   ├── ...
-│   └── favicon.ico
+**E-Tutor** is a beautifully designed landing page for an online education platform. The project showcases modern web development practices with a focus on performance, accessibility, and clean code architecture.
+
+The design features a contemporary aesthetic with gradient accents, floating card animations, and a fully responsive layout that works seamlessly across all devices.
+
+---
+
+## 🌐 Demo
+
+🔗 **Live Demo:** [View Website](#) <!-- Add your deployment URL here -->
+
+### Preview
+
+| Desktop                                          | Mobile                                         |
+| ------------------------------------------------ | ---------------------------------------------- |
+| ![Desktop Preview](./public/preview-desktop.png) | ![Mobile Preview](./public/preview-mobile.png) |
+
+---
+
+## 🛠 Tech Stack
+
+| Category               | Technologies                        |
+| ---------------------- | ----------------------------------- |
+| **Framework**          | [Astro](https://astro.build/) v4.16 |
+| **Language**           | TypeScript 5.6                      |
+| **Styling**            | SCSS with BEM methodology           |
+| **Code Quality**       | ESLint, Prettier, Stylelint         |
+| **Git Hooks**          | Husky + lint-staged                 |
+| **Build Tool**         | Vite (via Astro)                    |
+| **Image Optimization** | Sharp                               |
+
+---
+
+## ✨ Features
+
+### 🎨 Design
+
+- Modern gradient-based UI with smooth animations
+- Floating card components with parallax effects
+- Fully responsive design (mobile-first approach)
+- Custom typography and color system
+
+### 🌐 Internationalization (i18n)
+
+- **Multi-language support** — English and Russian out of the box
+- **Instant language switching** — no page reload required
+- **Persistent selection** — language choice saved in localStorage
+- **Easy to extend** — simple JSON-like translation files
+
+### 🏗 Architecture
+
+- Component-based architecture with clear separation
+- BEM methodology for predictable CSS
+- Type-safe development with TypeScript
+- Modular SCSS with mixins and variables
+
+### ⚡ Performance
+
+- Static site generation for lightning-fast loads
+- Optimized images (AVIF format)
+- Minimal JavaScript footprint
+- CSS-only animations where possible
+
+### 🧰 Developer Experience
+
+- Component generator CLI tool
+- Pre-configured linting and formatting
+- Git hooks for code quality
+- Hot module replacement in development
+
+---
+
+## 🚀 Getting Started
+
+### Prerequisites
+
+- **Node.js** v18.14.1 or higher
+- **npm** v9.0.0 or higher
+
+### Installation
+
+1. **Clone the repository**
+
+   ```bash
+   git clone https://github.com/yourusername/e-tutor.git
+   cd e-tutor
+   ```
+
+2. **Install dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Start development server**
+
+   ```bash
+   npm run dev
+   ```
+
+4. **Open in browser**
+   ```
+   http://localhost:4321
+   ```
+
+### Build for Production
+
+```bash
+npm run build
+npm run preview  # Preview production build
+```
+
+---
+
+## 📁 Project Structure
+
+```
+e-tutor/
+├── public/                 # Static assets (favicons, manifest)
 ├── src/
-│   ├── components/         # компоненты
-│   │   ├── Modal/
-│   │   └──  ...
-│   ├── layouts/            # служебный слой для общих лэйаутов страниц
-│   │   ├── Main/
-│   │   ├── root/
-│   │   ├── UI-kit/
-│   │   └──  ...
-│   ├── shared/             # общее ( переиспользуемые глобальные сущности не имеющие конкретной привязки )
-│   │   ├── icons/
-│   │   ├── images/
-│   │   ├── const/
-│   │   ├── scripts/
-│   │   ├── settings/       # различные конфиги модалок, форм и т.д.
-│   │   ├── styles/
-│   │   └── types/
-│   ├── ui/                 # элементы интерфейса ( базовые переиспользуемые ui компоненты )
-│   │   ├── button/
-│   │   └──  ...
-│   └── pages/              # страницы ( лэйауты страниц )
-│       ├── index.astro/
-│       ├── sitemap.astro/
-│       ├── ui-kit.astro/
-│       └── ...
-├── utils/                   # утилиты ( автоматизация процессов, генерация компонентов, оптимизация картинок и тп. )
-│   ├── component/
-│   └── ...
-├── package.json
-└── ...
+│   ├── components/         # Reusable UI components
+│   │   ├── Container/      # Layout container
+│   │   ├── Footer/         # Site footer
+│   │   ├── Header/         # Site header with navigation
+│   │   └── Nav/            # Navigation component
+│   │
+│   ├── includes/           # Page sections
+│   │   ├── Hero/           # Hero section with CTA
+│   │   ├── Features/       # Features grid
+│   │   ├── Courses/        # Course cards
+│   │   ├── Testimonials/   # User testimonials
+│   │   └── CTA/            # Call-to-action section
+│   │
+│   ├── layouts/            # Page layouts
+│   │   ├── Main/           # Main content layout
+│   │   └── root/           # Root HTML layout
+│   │
+│   ├── pages/              # Route pages
+│   │   └── index.astro     # Homepage
+│   │
+│   ├── i18n/               # Internationalization
+│   │   ├── translations/   # Language files
+│   │   │   ├── en.ts       # English translations
+│   │   │   └── ru.ts       # Russian translations
+│   │   ├── index.ts        # i18n utilities
+│   │   └── types.ts        # TypeScript types
+│   │
+│   ├── shared/             # Shared resources
+│   │   ├── const/          # Constants
+│   │   ├── icons/          # SVG icons
+│   │   ├── images/         # Image assets
+│   │   ├── mocks/          # Mock data
+│   │   ├── scripts/        # Utility scripts
+│   │   ├── styles/         # Global styles & mixins
+│   │   └── types/          # TypeScript types
+│   │
+│   └── ui/                 # UI kit components
+│       ├── Button/         # Button component
+│       ├── Icon/           # Icon component
+│       ├── LangSelector/   # Language selector
+│       ├── Picture/        # Responsive picture
+│       ├── Text/           # Text component
+│       └── Title/          # Title component
+│
+├── utils/                  # Build utilities
+│   ├── component/          # Component generator
+│   ├── create-robots-file.mjs
+│   └── images-optimize.mjs
+│
+├── astro.config.mjs        # Astro configuration
+├── eslint.config.js        # ESLint configuration
+├── tsconfig.json           # TypeScript configuration
+└── package.json
 ```
 
-Все статические файлы, например шрифты или favicon, могут лежать в папке `public/`. Оттуда все файлы автоматически попадают в билд.
-
-## 🐱‍💻 Команды
-
-Все команды запускаются из корня проекта:
-
-| Command                   | Action                                                   |
-| :------------------------ | :------------------------------------------------------- |
-| `npm install`             | Установить зависимости                                   |
-| `npm run prepare`         | Инициализировать husky pre-commit                        |
-| `npm run dev`             | Запустить локальный дев сервер `localhost:4321`          |
-| `npm run start`           | Запустить сервер c IP адресом доступным в локальной сети |
-| `npm run build`           | Собрать билд для продакшна `./dist/`                     |
-| `npm run preview`         | Посмотреть билд локально перед деплоем                   |
-| `npm run astro -- --help` | Получить помощь в использовании Astro CLI                |
-| `npm run lint`            | Запустить линтер с автоисправлениями                     |
-| `npm run comp`            | Утилита для создания шаблонного компонента               |
-| `npm run images`          | Утилита для оптимизации изображений                      |
-
-## 🎴 Картинки
-
-Есть два варианта для использования картинок:
-
-### 1. Использовать компонент астро Picture. Он автоматически генерирует х1, х2 и webp. Автоматически подставляет ширину и высоту. [Документация](https://docs.astro.build/en/guides/images/)
-
-Миксин генерирует все изображения из изначальной картинки (х1, х2, webp)
-нужно только изначально прокинуть картинку х2
-
-Используйте по согласованию с бэком или если бэка нет.
-Обязательно нужно указать ширину, чтобы правильно сгенерировались картинки х1.5
-
-```Astro
----
-import { Picture } from "astro:assets";
-import myImage from "@images/my-image.jpg";
 ---
 
-<Picture
-  src={myImage}
-  alt="Example image"
-  quality={"high"}
-  formats={["webp"]}
-  width={image.width / 2}
-  height={image.height / 2}
-  densities={[2]}
-/>
-```
+## 📜 Scripts
 
-### 2. Использовать утилиту для оптимизации графики
+| Command                  | Description                        |
+| ------------------------ | ---------------------------------- |
+| `npm run dev`            | Start development server           |
+| `npm run start`          | Start dev server with host exposed |
+| `npm run build`          | Build for production               |
+| `npm run preview`        | Preview production build           |
+| `npm run check`          | Run Astro type checking            |
+| `npm run check:ts`       | Run TypeScript checking            |
+| `npm run lint`           | Run all linters                    |
+| `npm run lint:prettier`  | Format code with Prettier          |
+| `npm run lint:eslint`    | Lint JS/TS with ESLint             |
+| `npm run lint:stylelint` | Lint SCSS with Stylelint           |
+| `npm run comp`           | Generate new component             |
+| `npm run images`         | Optimize images                    |
 
-`npm run images`
-
-Исходники картинок для оптимизации хранятся в директории `src/assets/images`
-
-Можно закидывать картинки в форматах `jpg, jpeg, png`. Желательно выгружать из макетов в хорошем качестве (2x, 3x)
-
-Оптимизированные изображения сохраняются в папку `public/images`. Можно как очистить папку от ранее сгенерированных
-изображений, так и обновлять их свежими версиями (по умолчанию No)
-
-В случае оптимизации ретинизированной графики (по умолчанию Yes), в название файла добавляется постфикс (@1x, @2x)
-
-Генерация `webp` опциональна (по умолчанию Yes)
-
-Можно использовать компонент `ui/Picture/Picture.astro`
-
-```Astro
----
-import Picture from '@ui/Picture/Picture'
 ---
 
-<Picture
-  name="city"
-  alt="Example image"
-  format="jpg"
-  width={1920}
-  height={1280}
-/>
-```
+## 🎯 Sections
 
-Также добавлена возможность добавить адаптивное изображение для мобильной версии и задать брейкпоинт:
+### Hero
 
-```ts
-interface Props {
-  ///
-  isAdaptive?: boolean
-  mobileBreakpoint?: number
-  ///
+Eye-catching hero section with animated gradient blobs, statistics counter, and floating achievement cards.
+
+### Features
+
+Six-card grid showcasing platform benefits with unique color accents and hover animations.
+
+### Courses
+
+Course catalog display with category tags, ratings, and pricing information.
+
+### Testimonials
+
+User reviews carousel with profile photos and star ratings.
+
+### CTA
+
+Final call-to-action section encouraging user sign-up.
+
+---
+
+## 🌐 Internationalization (i18n)
+
+The project includes a custom client-side i18n system for multi-language support.
+
+### How It Works
+
+1. **Translation files** are located in `src/i18n/translations/`
+2. **Language selector** in the header triggers instant translation
+3. **Selected language** is saved to localStorage and persists across sessions
+
+### Adding Translations
+
+1. Add your text keys to both `en.ts` and `ru.ts`:
+
+```typescript
+// src/i18n/translations/en.ts
+export const en = {
+  mySection: {
+    title: 'Hello World',
+    description: 'Welcome to our platform'
+  }
 }
 ```
 
-## ♠️ Иконки
-
-Все иконки должны быть в папке `src/icons`.
-Используйте компонент Icon, он вставляет svg инлайном на страницу.
-Спрайт собирается автоматически при множественном использовании одной иконки на конкретной странице.
-
-```Astro
----
-import { Icon } from 'astro-icon/components'
----
-
-<div class="icon">
-  <Icon name="icon-close" width={24} height={24} />
-</div>
+```typescript
+// src/i18n/translations/ru.ts
+export const ru = {
+  mySection: {
+    title: 'Привет мир',
+    description: 'Добро пожаловать на нашу платформу'
+  }
+}
 ```
 
-Не используйте `<img>` для этого кейса, если нужно использовать `svg` в тэге `<img>`, добавляйте `svg` в папку `public/`.
+2. Use `data-i18n` attribute in your HTML:
 
-## 📦 Слоты <slot>
-
-Примеры использования можно посмотреть в [доке](https://docs.astro.build/en/core-concepts/astro-components/#slots), хотел лишь добавить что, если в вашем компоненте нужна проверка, принимает ли он слот или нет (например чтобы не генерировать лишнии пустые блоки которыми обернут слот) испрользуйте проверку 👇
-
-```Astro
-<div class="card">
-  ...
-  {Astro.slots.has("buttons") && (
-    <div class="card__buttons">
-      <slot name="buttons">
-      </slot>
-    </div>
-  )}
-  ...
-</div>
+```html
+<h1 data-i18n="mySection.title">Hello World</h1>
+<p data-i18n="mySection.description">Welcome to our platform</p>
 ```
 
-Слоты можно прокидывать через промежуточные компоненты: [пример из доки](https://docs.astro.build/en/core-concepts/astro-components/#transferring-slots)
+### Available Attributes
 
-## 🧜 Полиморфные компоненты
+| Attribute              | Usage                    |
+| ---------------------- | ------------------------ |
+| `data-i18n`            | Text content translation |
+| `data-i18n-alt`        | Image alt text           |
+| `data-i18n-placeholder`| Input placeholders       |
 
-В проекте есть полиморфные компоненты (Title, Button и т.д.) на основе пропса `as="..."`, в который нужно передать желаемый `html` тэг. Это позволяет указать TS чтобы он подтянул нативные пропсы(аттрибуты) сам исходя из переданного тэга. Вы так же вы можете расширить TS-тип добавив нужные вам пропсы `type Props<Tag extends HTMLTag> = Polymorphic<{as: Tag}> & { ..здесь ваши пропсы.. }`
+### Adding New Languages
 
-## 👀 Хотите узнать больше?
+1. Create a new file in `src/i18n/translations/` (e.g., `de.ts`)
+2. Add the locale to `src/i18n/index.ts` and `types.ts`
+3. Update `LangSelector.astro` with the new language option
 
-Посмотрите [документацию Astro](https://docs.astro.build).
+---
+
+## 🎨 Design System
+
+### Colors
+
+| Variable             | Usage               |
+| -------------------- | ------------------- |
+| `--color-primary`    | Primary brand color |
+| `--color-secondary`  | Secondary actions   |
+| `--color-accent`     | Accent highlights   |
+| `--color-text`       | Body text           |
+| `--color-text-muted` | Secondary text      |
+| `--color-bg`         | Background          |
+
+### Typography
+
+- **Font Family:** Inter (system fallback stack)
+- **Scale:** Based on modular scale for consistency
+
+### Breakpoints
+
+| Name    | Width          |
+| ------- | -------------- |
+| Mobile  | < 768px        |
+| Tablet  | 768px - 1024px |
+| Desktop | > 1024px       |
+
+---
+
+## 📄 License
+
+This project is open source and available under the [MIT License](LICENSE).
+
+---
+
+<p align="center">
+  Made with ❤️ and ☕
+</p>

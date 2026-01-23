@@ -1,9 +1,9 @@
 ---
 import Title from '@/ui/Title/Title.astro'
 import Text from '@/ui/Text/Text.astro'
-import { Picture as AstroPicture } from 'astro:assets'
+// import { Picture as AstroPicture } from 'astro:assets'
 import Picture from '@ui/Picture/Picture'
-import cityImage from '@images/city.jpg'
+// import cityImage from '@images/city.jpg' // Image was removed
 import Icon from '@/ui/Icon/Icon.astro'
 
 interface Props {
@@ -164,6 +164,8 @@ import myImage from "@images/my-image.jpg";
           />
         </p>
       </Text>
+      <!-- Image example removed - city.jpg was deleted -->
+      <!--
       <Text>
         <AstroPicture
           src={cityImage}
@@ -175,6 +177,7 @@ import myImage from "@images/my-image.jpg";
           densities={[2]}
         />
       </Text>
+      -->
       <Title
         as="h3"
         size="xs"
@@ -237,6 +240,8 @@ import Picture from '@ui/Picture/Picture'
         </p>
       </Text>
 
+      <!-- Image example removed - city.jpg was deleted -->
+      <!--
       <Text>
         <Picture
           name="city"
@@ -247,6 +252,7 @@ import Picture from '@ui/Picture/Picture'
           width={1920}
         />
       </Text>
+      -->
 
       <Title as="h2" size="sm" text="♠️ Иконки" />
       <Text>

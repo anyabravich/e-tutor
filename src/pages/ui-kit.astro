@@ -3,46 +3,573 @@ import Container from '@components/Container/Container'
 import UIKitLayout from '@layouts/UI-kit/UI-kit'
 import Button from '@ui/Button/Button'
 import Title from '@ui/Title/Title'
+import Icon from '@ui/Icon/Icon'
+import LangSelector from '@ui/LangSelector/LangSelector'
 ---
 
 <UIKitLayout>
   <div class="ui">
     <Container>
+      <!-- Typography: Titles -->
       <section data-ui-section>
         <h2 class="ui__title" data-ui-title>Заголовки</h2>
-        <Title text="Title size=`xl`" as="h1" size="xl" />
-        <Title text="Title size=`lg`" as="h2" size="lg" />
-        <Title text="Title size=`md`" as="h3" size="md" />
-        <Title text="Title size=`sm`" as="p" size="sm" />
-        <Title
-          text="Title size=`sm` --uppercase"
-          as="p"
-          size="sm"
-          mods={['uppercase']}
-        />
+        <div class="ui__grid">
+          <Title text="Heading XL — 48px" as="h1" size="xl" />
+          <Title text="Heading LG — 36px" as="h2" size="lg" />
+          <Title text="Heading MD — 28px" as="h3" size="md" />
+          <Title text="Heading SM — 22px" as="h4" size="sm" />
+          <Title text="Heading XS — 18px" as="h5" size="xs" />
+          <Title text="Heading XXS — 14px" as="h6" size="xxs" />
+        </div>
+        <div class="ui__grid" style="margin-top: 2rem;">
+          <Title text="UPPERCASE SM" as="p" size="sm" mods={['uppercase']} />
+        </div>
       </section>
 
+      <!-- Buttons: Variants -->
       <section data-ui-section>
-        <h2 class="ui__title" data-ui-title>Кнопки</h2>
-        <Button text="Классическая кнопка" />
-        <Button icon="icon-close" text="Кнопка с иконкой" />
-        <Button icon="arrow-left" iconPosBefore text="Кнопка с иконкой" />
-        <Button mods={['fill']} text="Кнопка с фоном" />
-        <Button mods={['fill']} as="a" href="#" text="Кнопка ссылка" />
+        <h2 class="ui__title" data-ui-title>Кнопки — Варианты</h2>
+        <div class="ui__row">
+          <Button text="Default" />
+          <Button text="Fill" mods={['fill']} />
+          <Button text="Outline" mods={['outline']} />
+          <Button text="Ghost" mods={['ghost']} />
+        </div>
       </section>
 
+      <!-- Buttons: Sizes -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Кнопки — Размеры</h2>
+        <div class="ui__row">
+          <Button text="Large" mods={['fill', 'lg']} />
+          <Button text="Default" mods={['fill']} />
+          <Button text="Small" mods={['fill', 'sm']} />
+        </div>
+      </section>
+
+      <!-- Buttons: With Icons -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Кнопки — С иконками</h2>
+        <div class="ui__row">
+          <Button icon="arrow-left" iconPosBefore text="Назад" mods={['outline']} />
+          <Button icon="close" text="Закрыть" mods={['ghost']} />
+          <Button icon="arrow-left" iconPosBefore text="С иконкой" mods={['fill']} />
+        </div>
+      </section>
+
+      <!-- Buttons: Links -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Кнопки — Ссылки</h2>
+        <div class="ui__row">
+          <Button as="a" href="#" text="Link Default" />
+          <Button as="a" href="#" text="Link Fill" mods={['fill']} />
+          <Button as="a" href="#" text="Link Outline" mods={['outline']} />
+        </div>
+      </section>
+
+      <!-- Buttons: Dark Background -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Кнопки — На тёмном фоне</h2>
+        <div class="ui__row ui__row--dark">
+          <Button text="White Fill" mods={['fill', 'white']} />
+          <Button text="White Outline" mods={['outline', 'white']} />
+        </div>
+      </section>
+
+      <!-- Colors: Primary -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Цвета — Основные</h2>
+        <div class="ui__colors">
+          <div class="ui__color-group">
+            <span class="ui__color-label">Primary</span>
+            <div class="ui__color-row">
+              <div class="ui__color-swatch" style="background: var(--color-primary-light)">
+                <span>Light</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-primary)">
+                <span>Primary</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-primary-dark)">
+                <span>Dark</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ui__color-group">
+            <span class="ui__color-label">Secondary</span>
+            <div class="ui__color-row">
+              <div class="ui__color-swatch" style="background: var(--color-secondary-light)">
+                <span>Light</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-secondary)">
+                <span>Secondary</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-secondary-dark)">
+                <span>Dark</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ui__color-group">
+            <span class="ui__color-label">Accent</span>
+            <div class="ui__color-row">
+              <div class="ui__color-swatch" style="background: var(--color-accent-light)">
+                <span>Light</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-accent)">
+                <span>Accent</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-accent-dark)">
+                <span>Dark</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Colors: Semantic -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Цвета — Семантические</h2>
+        <div class="ui__colors">
+          <div class="ui__color-group">
+            <span class="ui__color-label">Success</span>
+            <div class="ui__color-row">
+              <div class="ui__color-swatch" style="background: var(--color-success-light)">
+                <span>Light</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-success)">
+                <span>Success</span>
+              </div>
+            </div>
+          </div>
+          
+          <div class="ui__color-group">
+            <span class="ui__color-label">Warning</span>
+            <div class="ui__color-row">
+              <div class="ui__color-swatch" style="background: var(--color-warning-light)">
+                <span>Light</span>
+              </div>
+              <div class="ui__color-swatch" style="background: var(--color-warning)">
+                <span>Warning</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Colors: Neutrals -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Цвета — Нейтральные</h2>
+        <div class="ui__colors">
+          <div class="ui__color-row ui__color-row--neutrals">
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-50)">
+              <span style="color: var(--color-grey-700)">50</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-100)">
+              <span style="color: var(--color-grey-700)">100</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-200)">
+              <span style="color: var(--color-grey-700)">200</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-300)">
+              <span style="color: var(--color-grey-700)">300</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-400)">
+              <span>400</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-500)">
+              <span>500</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-600)">
+              <span>600</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-700)">
+              <span>700</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-800)">
+              <span>800</span>
+            </div>
+            <div class="ui__color-swatch ui__color-swatch--sm" style="background: var(--color-grey-900)">
+              <span>900</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Gradients -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Градиенты</h2>
+        <div class="ui__gradients">
+          <div class="ui__gradient" style="background: var(--gradient-primary)">
+            <span>Primary</span>
+            <code>--gradient-primary</code>
+          </div>
+          <div class="ui__gradient" style="background: var(--gradient-accent)">
+            <span>Accent</span>
+            <code>--gradient-accent</code>
+          </div>
+          <div class="ui__gradient" style="background: var(--gradient-warm)">
+            <span>Warm</span>
+            <code>--gradient-warm</code>
+          </div>
+          <div class="ui__gradient" style="background: var(--gradient-cool)">
+            <span>Cool</span>
+            <code>--gradient-cool</code>
+          </div>
+        </div>
+      </section>
+
+      <!-- Icons -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Иконки</h2>
+        <div class="ui__icons">
+          <div class="ui__icon-item">
+            <div class="ui__icon-box">
+              <Icon name="arrow-left" />
+            </div>
+            <span>arrow-left</span>
+          </div>
+          <div class="ui__icon-item">
+            <div class="ui__icon-box">
+              <Icon name="close" />
+            </div>
+            <span>close</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Language Selector -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Селектор языка</h2>
+        <p class="ui__text">Варианты</p>
+        <div class="ui__row">
+          <LangSelector defaultLang="ru" />
+          <LangSelector defaultLang="en" />
+        </div>
+        <p class="ui__text" style="margin-top: 1rem;">Модификаторы</p>
+        <div class="ui__row">
+          <LangSelector defaultLang="ru" mods={['compact']} />
+          <LangSelector defaultLang="ru" mods={['outline']} />
+        </div>
+        <p class="ui__text" style="margin-top: 1rem;">На тёмном фоне</p>
+        <div class="ui__row ui__row--dark">
+          <LangSelector defaultLang="ru" mods={['dark']} />
+          <LangSelector defaultLang="en" mods={['dark', 'compact']} />
+        </div>
+      </section>
+
+      <!-- Modals -->
       <section data-ui-section>
         <h2 class="ui__title" data-ui-title>Модалки</h2>
-        <Button text="Стандартная модалка" modal="example" />
+        <div class="ui__row">
+          <Button text="Открыть модалку" modal="example" mods={['fill']} />
+        </div>
       </section>
+
+      <!-- Spacing -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Отступы</h2>
+        <div class="ui__spacing">
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 4px; height: 4px;"></div>
+            <span>4px</span>
+          </div>
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 8px; height: 8px;"></div>
+            <span>8px</span>
+          </div>
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 12px; height: 12px;"></div>
+            <span>12px</span>
+          </div>
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 16px; height: 16px;"></div>
+            <span>16px</span>
+          </div>
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 24px; height: 24px;"></div>
+            <span>24px</span>
+          </div>
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 32px; height: 32px;"></div>
+            <span>32px</span>
+          </div>
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 48px; height: 48px;"></div>
+            <span>48px</span>
+          </div>
+          <div class="ui__spacing-item">
+            <div class="ui__spacing-box" style="width: 64px; height: 64px;"></div>
+            <span>64px</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Border Radius -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Скругления</h2>
+        <div class="ui__radius">
+          <div class="ui__radius-item">
+            <div class="ui__radius-box" style="border-radius: 4px;"></div>
+            <span>4px</span>
+          </div>
+          <div class="ui__radius-item">
+            <div class="ui__radius-box" style="border-radius: 8px;"></div>
+            <span>8px</span>
+          </div>
+          <div class="ui__radius-item">
+            <div class="ui__radius-box" style="border-radius: 12px;"></div>
+            <span>12px</span>
+          </div>
+          <div class="ui__radius-item">
+            <div class="ui__radius-box" style="border-radius: 16px;"></div>
+            <span>16px</span>
+          </div>
+          <div class="ui__radius-item">
+            <div class="ui__radius-box" style="border-radius: 24px;"></div>
+            <span>24px</span>
+          </div>
+          <div class="ui__radius-item">
+            <div class="ui__radius-box" style="border-radius: 50%;"></div>
+            <span>50%</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- Shadows -->
+      <section data-ui-section>
+        <h2 class="ui__title" data-ui-title>Тени</h2>
+        <div class="ui__shadows">
+          <div class="ui__shadow-item" style="box-shadow: 0 1px 2px rgba(0,0,0,0.05);">
+            <span>XS</span>
+          </div>
+          <div class="ui__shadow-item" style="box-shadow: 0 1px 3px rgba(0,0,0,0.1), 0 1px 2px rgba(0,0,0,0.06);">
+            <span>SM</span>
+          </div>
+          <div class="ui__shadow-item" style="box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1), 0 2px 4px -1px rgba(0,0,0,0.06);">
+            <span>MD</span>
+          </div>
+          <div class="ui__shadow-item" style="box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1), 0 4px 6px -2px rgba(0,0,0,0.05);">
+            <span>LG</span>
+          </div>
+          <div class="ui__shadow-item" style="box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04);">
+            <span>XL</span>
+          </div>
+          <div class="ui__shadow-item" style="box-shadow: 0 25px 50px -12px rgba(0,0,0,0.25);">
+            <span>2XL</span>
+          </div>
+        </div>
+      </section>
+
     </Container>
   </div>
 </UIKitLayout>
 
-<!--
-  для работы навигации необходимо проставить дата атрибуты:
-  <section data-ui-section>
-    <h2 class="ui__title" data-ui-title>Заголовки</h2>
-    ...
-  </section>
--->
+<style lang="scss">
+  @use "@styles/shared" as *;
+
+  .ui {
+    &__grid {
+      display: flex;
+      flex-direction: column;
+      gap: rem(16);
+    }
+
+    &__row {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: rem(16);
+
+      &--dark {
+        padding: rem(24);
+        background: var(--gradient-primary);
+        border-radius: rem(16);
+      }
+    }
+
+    &__colors {
+      display: flex;
+      flex-direction: column;
+      gap: rem(24);
+    }
+
+    &__color-group {
+      display: flex;
+      flex-direction: column;
+      gap: rem(8);
+    }
+
+    &__color-label {
+      font-size: rem(14);
+      font-weight: 600;
+      color: var(--color-grey-600);
+    }
+
+    &__color-row {
+      display: flex;
+      gap: rem(8);
+
+      &--neutrals {
+        flex-wrap: wrap;
+      }
+    }
+
+    &__color-swatch {
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+      width: rem(100);
+      height: rem(80);
+      padding: rem(8);
+      border-radius: rem(12);
+
+      span {
+        font-size: rem(11);
+        font-weight: 600;
+        color: var(--color-white);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+      }
+
+      &--sm {
+        width: rem(64);
+        height: rem(64);
+      }
+    }
+
+    &__gradients {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(rem(200), 1fr));
+      gap: rem(16);
+    }
+
+    &__gradient {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: rem(8);
+      height: rem(120);
+      border-radius: rem(16);
+
+      span {
+        font-size: rem(16);
+        font-weight: 600;
+        color: var(--color-white);
+      }
+
+      code {
+        font-size: rem(12);
+        color: rgba(255, 255, 255, 0.8);
+        background: rgba(0, 0, 0, 0.2);
+        padding: rem(4) rem(8);
+        border-radius: rem(4);
+      }
+    }
+
+    &__icons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(24);
+    }
+
+    &__icon-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(8);
+
+      span {
+        font-size: rem(12);
+        color: var(--color-grey-600);
+      }
+    }
+
+    &__icon-box {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(56);
+      height: rem(56);
+      background: var(--color-grey-100);
+      border-radius: rem(12);
+
+      svg {
+        width: rem(24);
+        height: rem(24);
+        color: var(--color-grey-700);
+      }
+    }
+
+    &__spacing {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      gap: rem(24);
+    }
+
+    &__spacing-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(8);
+
+      span {
+        font-size: rem(12);
+        color: var(--color-grey-600);
+      }
+    }
+
+    &__spacing-box {
+      background: var(--color-primary);
+      border-radius: rem(2);
+    }
+
+    &__radius {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(24);
+    }
+
+    &__radius-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: rem(8);
+
+      span {
+        font-size: rem(12);
+        color: var(--color-grey-600);
+      }
+    }
+
+    &__radius-box {
+      width: rem(64);
+      height: rem(64);
+      background: var(--color-grey-200);
+      border: 2px solid var(--color-primary);
+    }
+
+    &__shadows {
+      display: flex;
+      flex-wrap: wrap;
+      gap: rem(24);
+    }
+
+    &__shadow-item {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(100);
+      height: rem(100);
+      background: var(--color-white);
+      border-radius: rem(12);
+
+      span {
+        font-size: rem(14);
+        font-weight: 600;
+        color: var(--color-grey-600);
+      }
+    }
+  }
+</style>

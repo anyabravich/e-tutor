@@ -3,10 +3,7 @@ import RootLayout from '@layouts/root/root'
 import Header from '@components/Header/Header'
 import Footer from '@components/Footer/Footer'
 import Nav from '@/components/Nav/Nav.astro'
-
-interface Props {
-  title: string
-}
+import type { Props } from './Main.types'
 
 const { title } = Astro.props
 ---

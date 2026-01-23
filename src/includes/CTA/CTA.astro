@@ -1,0 +1,30 @@
+---
+import Container from '@components/Container/Container'
+import Button from '@ui/Button/Button'
+---
+
+<section class="cta">
+  <Container className="cta__container">
+    <div class="cta__content">
+      <h2 class="cta__title">
+        <span data-i18n="cta.title">Ready to Start Your</span>
+        <span class="cta__title-gradient" data-i18n="cta.titleGradient">Learning Journey?</span>
+      </h2>
+      <p class="cta__text" data-i18n="cta.text">
+        Join over 50,000 students already learning on our platform. 
+        Get unlimited access to all courses with our premium subscription.
+      </p>
+      <div class="cta__actions">
+        <Button as="a" href="#" text="Get Started Free" mods={['fill', 'lg', 'white']} data-i18n="cta.btnStart" />
+        <Button as="a" href="#" text="View Pricing" mods={['outline', 'lg', 'white']} data-i18n="cta.btnPricing" />
+      </div>
+      <p class="cta__note" data-i18n="cta.note">No credit card required • Cancel anytime</p>
+    </div>
+    
+    <div class="cta__decoration">
+      <div class="cta__circle _item-1"></div>
+      <div class="cta__circle _item-2"></div>
+      <div class="cta__circle _item-3"></div>
+    </div>
+  </Container>
+</section>

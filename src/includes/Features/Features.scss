@@ -1,0 +1,145 @@
+@use "@styles/shared" as *;
+
+.features {
+  padding: rem(100) 0;
+  background: var(--color-white);
+
+  @include phone {
+    padding: rem(60) 0;
+  }
+
+  &__header {
+    text-align: center;
+    max-width: rem(680);
+    margin: 0 auto rem(64);
+
+    @include phone {
+      margin-bottom: rem(40);
+    }
+  }
+
+  &__badge {
+    display: inline-block;
+    padding: rem(8) rem(16);
+    margin-bottom: rem(16);
+    font-size: rem(13);
+    font-weight: 600;
+    color: var(--color-secondary);
+    background: rgba(var(--color-secondary--rgb), 0.1);
+    border-radius: rem(100);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    margin-bottom: rem(16);
+    font-size: clamp(rem(32), 4vw, rem(48));
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-grey-900);
+
+    &-gradient {
+      background: var(--gradient-primary);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+  }
+
+  &__subtitle {
+    font-size: rem(18);
+    line-height: 1.7;
+    color: var(--color-grey-600);
+
+    @include phone {
+      font-size: rem(16);
+    }
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: rem(24);
+
+    @include phone {
+      grid-template-columns: 1fr;
+      gap: rem(20);
+    }
+  }
+
+  &__card {
+    position: relative;
+    padding: rem(32);
+    background: var(--color-grey-50);
+    border-radius: rem(20);
+    transition: transform $default-transition, box-shadow $default-transition;
+    overflow: hidden;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: rem(4);
+      background: var(--card-color);
+      opacity: 0;
+      transition: opacity $default-transition;
+    }
+
+    @include hover {
+      transform: translateY(rem(-8));
+      box-shadow: 0 rem(20) rem(40) rgba(0, 0, 0, 0.08);
+
+      &::before {
+        opacity: 1;
+      }
+    }
+
+    &._primary {
+      --card-color: var(--color-primary);
+    }
+
+    &._secondary {
+      --card-color: var(--color-secondary);
+    }
+
+    &._accent {
+      --card-color: var(--color-accent);
+    }
+
+    &._success {
+      --card-color: var(--color-success);
+    }
+
+    &._warning {
+      --card-color: var(--color-warning);
+    }
+
+    &-icon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(60);
+      height: rem(60);
+      margin-bottom: rem(20);
+      font-size: rem(28);
+      background: var(--color-white);
+      border-radius: rem(14);
+      box-shadow: 0 rem(4) rem(12) rgba(0, 0, 0, 0.04);
+    }
+
+    &-title {
+      margin-bottom: rem(12);
+      font-size: rem(20);
+      font-weight: 700;
+      color: var(--color-grey-900);
+    }
+
+    &-text {
+      font-size: rem(15);
+      line-height: 1.7;
+      color: var(--color-grey-600);
+    }
+  }
+}

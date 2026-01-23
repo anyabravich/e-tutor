@@ -3,47 +3,139 @@
 .button {
   display: inline-flex;
   align-items: center;
+  justify-content: center;
 
-  padding: rem(12) rem(18);
+  padding: rem(12) rem(24);
   width: fit-content;
-  gap: rem(7);
+  gap: rem(8);
 
-  border: max(rem(2), 2px) solid var(--color-fedora);
-  border-radius: 12px;
-  background-color: var(--color-lavender);
+  border: rem(2) solid var(--color-primary);
+  border-radius: rem(12);
+  background-color: transparent;
   cursor: pointer;
-  transition: background-color $default-transition;
+  text-decoration: none;
+  transition: 
+    background-color $default-transition,
+    border-color $default-transition,
+    transform $default-transition,
+    box-shadow $default-transition;
 
   @include hover {
-    background-color: var(--color-white);
+    transform: translateY(rem(-2));
+    box-shadow: 0 rem(4) rem(12) rgba(var(--color-primary--rgb), 0.25);
   }
 
   &__text {
-    font-size: rem(18);
-    color: var(--color-fedora);
+    font-size: rem(15);
+    font-weight: 600;
+    color: var(--color-primary);
+    white-space: nowrap;
   }
 
   &__icon {
-    width: rem(24);
-    height: rem(24);
+    width: rem(20);
+    height: rem(20);
 
     svg {
       width: 100%;
       height: 100%;
-      color: var(--color-fedora);
+      color: currentColor;
     }
   }
 
-  &--fill {
-    border-color: var(--color-white);
-    background-color: var(--color-fedora);
+  // Sizes
+  &._lg {
+    padding: rem(16) rem(32);
+
+    .button__text {
+      font-size: rem(16);
+    }
+  }
+
+  &._sm {
+    padding: rem(8) rem(16);
+
+    .button__text {
+      font-size: rem(13);
+    }
+  }
+
+  // Variants
+  &._fill {
+    border-color: var(--color-primary);
+    background-color: var(--color-primary);
 
     .button__text {
       color: var(--color-white);
     }
 
     @include hover {
-      background-color: var(--color-east-side);
+      background-color: var(--color-primary-dark);
+      border-color: var(--color-primary-dark);
+    }
+  }
+
+  &._outline {
+    border-color: var(--color-grey-300);
+    background-color: transparent;
+
+    .button__text {
+      color: var(--color-grey-700);
+    }
+
+    @include hover {
+      border-color: var(--color-primary);
+      background-color: rgba(var(--color-primary--rgb), 0.05);
+
+      .button__text {
+        color: var(--color-primary);
+      }
+    }
+  }
+
+  &._ghost {
+    border-color: transparent;
+    background-color: transparent;
+
+    .button__text {
+      color: var(--color-grey-700);
+    }
+
+    @include hover {
+      background-color: var(--color-grey-100);
+      box-shadow: none;
+      transform: none;
+    }
+  }
+
+  // White variants for dark backgrounds
+  &._white {
+    &._fill {
+      border-color: var(--color-white);
+      background-color: var(--color-white);
+
+      .button__text {
+        color: var(--color-primary);
+      }
+
+      @include hover {
+        background-color: var(--color-grey-100);
+        border-color: var(--color-grey-100);
+      }
+    }
+
+    &._outline {
+      border-color: rgba(255, 255, 255, 0.5);
+      background-color: transparent;
+
+      .button__text {
+        color: var(--color-white);
+      }
+
+      @include hover {
+        border-color: var(--color-white);
+        background-color: rgba(255, 255, 255, 0.1);
+      }
     }
   }
 }

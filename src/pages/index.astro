@@ -1,5 +1,24 @@
 ---
-import MainLayout from '@layouts/Main/Main'
+import RootLayout from '@layouts/root/root'
+import Header from '@components/Header/Header'
+import Footer from '@components/Footer/Footer'
+import Hero from '@/includes/Hero/Hero.astro'
+import Features from '@/includes/Features/Features.astro'
+import Courses from '@/includes/Courses/Courses.astro'
+import Testimonials from '@/includes/Testimonials/Testimonials.astro'
+import CTA from '@/includes/CTA/CTA.astro'
 ---
 
-<MainLayout title="Home" />
+<RootLayout title="e-tutor - Learn From The Best">
+  <Header />
+  
+  <main class="page__main">
+    <Hero />
+    <Features />
+    <Courses />
+    <Testimonials />
+    <CTA />
+  </main>
+  
+  <Footer />
+</RootLayout>

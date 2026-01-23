@@ -1,0 +1,125 @@
+---
+import Container from '@components/Container/Container'
+import Button from '@ui/Button/Button'
+import courses1 from '@images/courses-1.avif'
+import courses2 from '@images/courses-2.avif'
+import courses3 from '@images/courses-3.avif'
+import courses4 from '@images/courses-4.avif'
+---
+
+<section class="courses" id="courses">
+  <Container className="courses__container">
+    <div class="courses__header">
+      <div class="courses__header-content">
+        <span class="courses__badge" data-i18n="courses.badge">Popular Courses</span>
+        <h2 class="courses__title">
+          <span data-i18n="courses.title">Explore Our</span>
+          <span class="courses__title-gradient" data-i18n="courses.titleGradient">Top Courses</span>
+        </h2>
+        <p class="courses__subtitle" data-i18n="courses.subtitle">
+          Discover our most popular courses chosen by thousands of students worldwide.
+        </p>
+      </div>
+      <Button as="a" href="#" text="View All Courses" mods={['outline']} data-i18n="courses.btnViewAll" />
+    </div>
+    
+    <ul class="courses__grid">
+      <li class="courses__card _primary">
+        <div class="courses__card-image">
+          <img src={courses1.src} alt="" loading="lazy" />
+          <span class="courses__card-category" data-i18n="courses.items.webDev.category">Development</span>
+        </div>
+        <div class="courses__card-content">
+          <h3 class="courses__card-title" data-i18n="courses.items.webDev.title">Complete Web Development Bootcamp</h3>
+          <p class="courses__card-instructor"><span data-i18n="courses.by">by</span> <span data-i18n="courses.items.webDev.instructor">Sarah Johnson</span></p>
+          <div class="courses__card-meta">
+            <div class="courses__card-rating" aria-label="Rating: 4.9 out of 5">
+              <span class="courses__card-star" aria-hidden="true">⭐</span>
+              <span>4.9</span>
+            </div>
+            <span class="courses__card-students">12,500 <span data-i18n="courses.students">students</span></span>
+          </div>
+          <div class="courses__card-footer">
+            <div class="courses__card-price">
+              <span class="courses__card-price-current">$89</span>
+              <span class="courses__card-price-original"><span class="visually-hidden" data-i18n="courses.originalPrice">Original price:</span>$199</span>
+            </div>
+            <button class="courses__card-btn" data-i18n="courses.enrollNow">Enroll Now</button>
+          </div>
+        </div>
+      </li>
+      <li class="courses__card _secondary">
+        <div class="courses__card-image">
+          <img src={courses2.src} alt="" loading="lazy" />
+          <span class="courses__card-category" data-i18n="courses.items.uiux.category">Design</span>
+        </div>
+        <div class="courses__card-content">
+          <h3 class="courses__card-title" data-i18n="courses.items.uiux.title">UI/UX Design Masterclass</h3>
+          <p class="courses__card-instructor"><span data-i18n="courses.by">by</span> <span data-i18n="courses.items.uiux.instructor">Mike Chen</span></p>
+          <div class="courses__card-meta">
+            <div class="courses__card-rating" aria-label="Rating: 4.8 out of 5">
+              <span class="courses__card-star" aria-hidden="true">⭐</span>
+              <span>4.8</span>
+            </div>
+            <span class="courses__card-students">8,900 <span data-i18n="courses.students">students</span></span>
+          </div>
+          <div class="courses__card-footer">
+            <div class="courses__card-price">
+              <span class="courses__card-price-current">$79</span>
+              <span class="courses__card-price-original"><span class="visually-hidden" data-i18n="courses.originalPrice">Original price:</span>$149</span>
+            </div>
+            <button class="courses__card-btn" data-i18n="courses.enrollNow">Enroll Now</button>
+          </div>
+        </div>
+      </li>
+      <li class="courses__card _accent">
+        <div class="courses__card-image">
+          <img src={courses3.src} alt="" loading="lazy" />
+          <span class="courses__card-category" data-i18n="courses.items.dataScience.category">Business</span>
+        </div>
+        <div class="courses__card-content">
+          <h3 class="courses__card-title" data-i18n="courses.items.dataScience.title">Data Science & Machine Learning</h3>
+          <p class="courses__card-instructor"><span data-i18n="courses.by">by</span> <span data-i18n="courses.items.dataScience.instructor">Dr. Emily Ross</span></p>
+          <div class="courses__card-meta">
+            <div class="courses__card-rating" aria-label="Rating: 4.9 out of 5">
+              <span class="courses__card-star" aria-hidden="true">⭐</span>
+              <span>4.9</span>
+            </div>
+            <span class="courses__card-students">15,200 <span data-i18n="courses.students">students</span></span>
+          </div>
+          <div class="courses__card-footer">
+            <div class="courses__card-price">
+              <span class="courses__card-price-current">$99</span>
+              <span class="courses__card-price-original"><span class="visually-hidden" data-i18n="courses.originalPrice">Original price:</span>$249</span>
+            </div>
+            <button class="courses__card-btn" data-i18n="courses.enrollNow">Enroll Now</button>
+          </div>
+        </div>
+      </li>
+      <li class="courses__card _success">
+        <div class="courses__card-image">
+          <img src={courses4.src} alt="" loading="lazy" />
+          <span class="courses__card-category" data-i18n="courses.items.marketing.category">Marketing</span>
+        </div>
+        <div class="courses__card-content">
+          <h3 class="courses__card-title" data-i18n="courses.items.marketing.title">Digital Marketing Strategy</h3>
+          <p class="courses__card-instructor"><span data-i18n="courses.by">by</span> <span data-i18n="courses.items.marketing.instructor">Alex Turner</span></p>
+          <div class="courses__card-meta">
+            <div class="courses__card-rating" aria-label="Rating: 4.7 out of 5">
+              <span class="courses__card-star" aria-hidden="true">⭐</span>
+              <span>4.7</span>
+            </div>
+            <span class="courses__card-students">6,800 <span data-i18n="courses.students">students</span></span>
+          </div>
+          <div class="courses__card-footer">
+            <div class="courses__card-price">
+              <span class="courses__card-price-current">$69</span>
+              <span class="courses__card-price-original"><span class="visually-hidden" data-i18n="courses.originalPrice">Original price:</span>$129</span>
+            </div>
+            <button class="courses__card-btn" data-i18n="courses.enrollNow">Enroll Now</button>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </Container>
+</section>
