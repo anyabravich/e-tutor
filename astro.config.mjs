@@ -17,9 +17,6 @@ export default defineConfig({
     service: sharpImageService()
   },
   integrations: [icons({ input: 'src/shared/icons' })],
-  server: {
-    open: '/readme'
-  },
   vite: {
     css: {
       preprocessorOptions: {
