@@ -108,6 +108,11 @@
     }
   }
 
+  // Full width
+  &._full {
+    width: 100%;
+  }
+
   // White variants for dark backgrounds
   &._white {
     &._fill {

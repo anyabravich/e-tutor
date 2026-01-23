@@ -1,0 +1,136 @@
+---
+import RootLayout from '@layouts/root/root'
+import Header from '@components/Header/Header'
+import Footer from '@components/Footer/Footer'
+import Container from '@components/Container/Container'
+import { courses } from '@shared/mocks'
+
+import './courses.scss'
+---
+
+<RootLayout title="All Courses - e-tutor">
+  <Header />
+  
+  <main class="page__main">
+    <section class="all-courses">
+      <Container className="all-courses__container">
+        <div class="all-courses__header">
+          <span class="all-courses__badge" data-i18n="allCourses.badge">All Courses</span>
+          <h1 class="all-courses__title">
+            <span data-i18n="allCourses.title">Find Your Perfect</span>
+            <span class="all-courses__title-gradient" data-i18n="allCourses.titleGradient">Learning Path</span>
+          </h1>
+          <p class="all-courses__subtitle" data-i18n="allCourses.subtitle">
+            Browse our complete catalog of courses designed to help you achieve your goals.
+          </p>
+        </div>
+
+        <div class="all-courses__filters" data-courses-filters>
+          <button class="all-courses__filter _active" data-filter="all" data-i18n="allCourses.filters.all">All</button>
+          <button class="all-courses__filter" data-filter="development" data-i18n="allCourses.filters.development">Development</button>
+          <button class="all-courses__filter" data-filter="design" data-i18n="allCourses.filters.design">Design</button>
+          <button class="all-courses__filter" data-filter="business" data-i18n="allCourses.filters.business">Business</button>
+          <button class="all-courses__filter" data-filter="marketing" data-i18n="allCourses.filters.marketing">Marketing</button>
+        </div>
+        
+        <ul class="all-courses__grid" data-courses-grid>
+          {courses.map((course) => (
+            <li class={`all-courses__card _${course.category}`} data-category={course.category}>
+              <a href={`/course/${course.slug}`} class="all-courses__card-link">
+                <div class="all-courses__card-image">
+                  <img src={course.image.src} alt="" loading="lazy" />
+                  <span class="all-courses__card-category" data-i18n={`courses.items.${course.categoryKey}.category`}>Category</span>
+                </div>
+                <div class="all-courses__card-content">
+                  <h3 class="all-courses__card-title" data-i18n={`courses.items.${course.categoryKey}.title`}>Course Title</h3>
+                  <p class="all-courses__card-instructor">
+                    <span data-i18n="courses.by">by</span> 
+                    <span data-i18n={`courses.items.${course.categoryKey}.instructor`}>Instructor</span>
+                  </p>
+                  <p class="all-courses__card-description" data-i18n={`courseDetail.items.${course.categoryKey}.shortDescription`}>Course description goes here.</p>
+                  <div class="all-courses__card-meta">
+                    <div class="all-courses__card-rating" aria-label={`Rating: ${course.rating} out of 5`}>
+                      <span class="all-courses__card-star" aria-hidden="true">⭐</span>
+                      <span>{course.rating}</span>
+                    </div>
+                    <span class="all-courses__card-students">{course.students.toLocaleString()} <span data-i18n="courses.students">students</span></span>
+                  </div>
+                  <div class="all-courses__card-footer">
+                    <div class="all-courses__card-price">
+                      <span class="all-courses__card-price-current">${course.price}</span>
+                      <span class="all-courses__card-price-original">
+                        <span class="visually-hidden" data-i18n="courses.originalPrice">Original price:</span>${course.originalPrice}
+                      </span>
+                    </div>
+                    <span class="all-courses__card-btn" data-i18n="courses.viewCourse">View Course</span>
+                  </div>
+                </div>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </Container>
+    </section>
+  </main>
+  
+  <Footer />
+</RootLayout>
+
+<script>
+  const filters = document.querySelector('[data-courses-filters]')
+  const grid = document.querySelector('[data-courses-grid]')
+  
+  if (filters && grid) {
+    const allButton = filters.querySelector('[data-filter="all"]')
+    const categoryButtons = filters.querySelectorAll('[data-filter]:not([data-filter="all"])')
+    const cards = grid.querySelectorAll('[data-category]')
+    
+    let activeFilters = new Set()
+    
+    function updateCards() {
+      cards.forEach(card => {
+        const category = card.getAttribute('data-category')
+        
+        if (activeFilters.size === 0 || activeFilters.has(category)) {
+          card.classList.remove('_hidden')
+        } else {
+          card.classList.add('_hidden')
+        }
+      })
+    }
+    
+    function updateAllButtonState() {
+      if (activeFilters.size === 0) {
+        allButton?.classList.add('_active')
+      } else {
+        allButton?.classList.remove('_active')
+      }
+    }
+    
+    // "All" button click
+    allButton?.addEventListener('click', () => {
+      activeFilters.clear()
+      categoryButtons.forEach(btn => btn.classList.remove('_active'))
+      updateAllButtonState()
+      updateCards()
+    })
+    
+    // Category buttons click (multi-select)
+    categoryButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const filter = button.getAttribute('data-filter')
+        
+        if (activeFilters.has(filter)) {
+          activeFilters.delete(filter)
+          button.classList.remove('_active')
+        } else {
+          activeFilters.add(filter)
+          button.classList.add('_active')
+        }
+        
+        updateAllButtonState()
+        updateCards()
+      })
+    })
+  }
+</script>

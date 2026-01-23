@@ -1,0 +1,519 @@
+@use "@styles/shared" as *;
+
+.course-detail {
+  padding: rem(120) 0 rem(100);
+  background: linear-gradient(180deg, var(--color-grey-50) 0%, var(--color-white) 100%);
+  min-height: 100vh;
+
+  @include phone {
+    padding: rem(100) 0 rem(60);
+  }
+
+  // Category colors
+  &._development {
+    --course-accent: var(--color-primary);
+  }
+
+  &._design {
+    --course-accent: var(--color-secondary);
+  }
+
+  &._business {
+    --course-accent: var(--color-accent);
+  }
+
+  &._marketing {
+    --course-accent: var(--color-success);
+  }
+
+  &__layout {
+    display: grid;
+    grid-template-columns: 1fr rem(380);
+    gap: rem(48);
+    align-items: start;
+
+    @media (max-width: 1100px) {
+      grid-template-columns: 1fr rem(320);
+      gap: rem(32);
+    }
+
+    @media (max-width: 900px) {
+      grid-template-columns: 1fr;
+      gap: rem(32);
+    }
+  }
+
+  &__content {
+    min-width: 0;
+  }
+
+  &__back {
+    display: inline-flex;
+    align-items: center;
+    gap: rem(8);
+    margin-bottom: rem(24);
+    font-size: rem(14);
+    font-weight: 500;
+    color: var(--color-grey-600);
+    text-decoration: none;
+    transition: color $default-transition;
+
+    @include hover {
+      color: var(--course-accent);
+    }
+
+    &-icon {
+      font-size: rem(18);
+    }
+  }
+
+  &__hero {
+    margin-bottom: rem(32);
+  }
+
+  &__category {
+    display: inline-block;
+    padding: rem(6) rem(14);
+    margin-bottom: rem(16);
+    font-size: rem(12);
+    font-weight: 600;
+    color: var(--color-white);
+    background: var(--course-accent);
+    border-radius: rem(8);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+
+  &__title {
+    margin-bottom: rem(16);
+    font-size: clamp(rem(28), 4vw, rem(42));
+    font-weight: 800;
+    line-height: 1.2;
+    color: var(--color-grey-900);
+  }
+
+  &__description {
+    margin-bottom: rem(24);
+    font-size: rem(17);
+    line-height: 1.7;
+    color: var(--color-grey-600);
+
+    @include phone {
+      font-size: rem(15);
+    }
+  }
+
+  &__meta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(20);
+    margin-bottom: rem(24);
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: rem(6);
+      font-size: rem(14);
+      color: var(--color-grey-600);
+    }
+
+    &-icon {
+      font-size: rem(16);
+    }
+
+    &-value {
+      font-weight: 600;
+      color: var(--color-grey-800);
+    }
+
+    &-label {
+      color: var(--color-grey-500);
+    }
+  }
+
+  &__stats {
+    display: flex;
+    flex-wrap: wrap;
+    gap: rem(24);
+    padding: rem(20);
+    background: var(--color-white);
+    border-radius: rem(16);
+    box-shadow: 0 rem(2) rem(12) rgba(0, 0, 0, 0.04);
+
+    @include phone {
+      gap: rem(16);
+      padding: rem(16);
+    }
+  }
+
+  &__stat {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: rem(4);
+    min-width: rem(80);
+    text-align: center;
+
+    @include phone {
+      flex: 1;
+      min-width: rem(60);
+    }
+
+    &-icon {
+      font-size: rem(24);
+      margin-bottom: rem(4);
+    }
+
+    &-value {
+      font-size: rem(16);
+      font-weight: 700;
+      color: var(--color-grey-900);
+    }
+
+    &-label {
+      font-size: rem(12);
+      color: var(--color-grey-500);
+    }
+  }
+
+  &__image-mobile {
+    display: none;
+    margin-bottom: rem(32);
+    border-radius: rem(16);
+    overflow: hidden;
+
+    @media (max-width: 900px) {
+      display: block;
+    }
+
+    img {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 16 / 9;
+      object-fit: cover;
+    }
+  }
+
+  &__section {
+    margin-bottom: rem(48);
+
+    @include phone {
+      margin-bottom: rem(32);
+    }
+
+    &-title {
+      margin-bottom: rem(24);
+      font-size: rem(24);
+      font-weight: 700;
+      color: var(--color-grey-900);
+
+      @include phone {
+        font-size: rem(20);
+        margin-bottom: rem(16);
+      }
+    }
+  }
+
+  &__features {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: rem(16);
+
+    @include phone {
+      grid-template-columns: 1fr;
+      gap: rem(12);
+    }
+  }
+
+  &__feature {
+    display: flex;
+    align-items: flex-start;
+    gap: rem(12);
+    padding: rem(16);
+    background: var(--color-white);
+    border-radius: rem(12);
+    box-shadow: 0 rem(2) rem(8) rgba(0, 0, 0, 0.04);
+
+    &-icon {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(24);
+      height: rem(24);
+      font-size: rem(14);
+      font-weight: 700;
+      color: var(--color-white);
+      background: var(--course-accent);
+      border-radius: 50%;
+    }
+  }
+
+  &__modules {
+    display: flex;
+    flex-direction: column;
+    gap: rem(8);
+    margin-bottom: rem(20);
+  }
+
+  &__module {
+    background: var(--color-white);
+    border-radius: rem(12);
+    box-shadow: 0 rem(2) rem(8) rgba(0, 0, 0, 0.04);
+    overflow: hidden;
+
+    &[open] {
+      .course-detail__module-arrow {
+        transform: rotate(90deg);
+      }
+    }
+
+    &-header {
+      display: flex;
+      align-items: center;
+      gap: rem(16);
+      padding: rem(16) rem(20);
+      cursor: pointer;
+      list-style: none;
+      transition: background $default-transition;
+
+      @include phone {
+        padding: rem(14) rem(16);
+        gap: rem(12);
+      }
+
+      &::-webkit-details-marker {
+        display: none;
+      }
+
+      @include hover {
+        background: var(--color-grey-50);
+      }
+    }
+
+    &-number {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(36);
+      height: rem(36);
+      font-size: rem(13);
+      font-weight: 700;
+      color: var(--course-accent);
+      background: rgba(var(--color-primary--rgb), 0.1);
+      border-radius: rem(10);
+
+      .course-detail._design & {
+        background: rgba(var(--color-secondary--rgb), 0.1);
+      }
+
+      .course-detail._business & {
+        background: rgba(var(--color-accent--rgb), 0.1);
+      }
+
+      .course-detail._marketing & {
+        background: rgba(var(--color-success--rgb), 0.1);
+      }
+    }
+
+    &-title {
+      flex: 1;
+      font-size: rem(15);
+      font-weight: 600;
+      color: var(--color-grey-800);
+
+      @include phone {
+        font-size: rem(14);
+      }
+    }
+
+    &-lessons {
+      flex-shrink: 0;
+      font-size: rem(13);
+      color: var(--color-grey-500);
+
+      @include phone {
+        display: none;
+      }
+    }
+
+    &-arrow {
+      flex-shrink: 0;
+      font-size: rem(12);
+      color: var(--color-grey-400);
+      transition: transform $default-transition;
+    }
+
+    &-content {
+      padding: 0 rem(20) rem(16) rem(72);
+      border-top: 1px solid var(--color-grey-100);
+
+      @include phone {
+        padding: 0 rem(16) rem(14) rem(16);
+      }
+    }
+
+    &-description {
+      padding-top: rem(12);
+      font-size: rem(14);
+      line-height: 1.6;
+      color: var(--color-grey-600);
+    }
+  }
+
+  &__total {
+    font-size: rem(14);
+    color: var(--color-grey-600);
+    text-align: center;
+    padding: rem(16);
+    background: var(--color-grey-50);
+    border-radius: rem(10);
+
+    strong {
+      color: var(--color-grey-800);
+    }
+  }
+
+  &__instructor {
+    display: flex;
+    gap: rem(20);
+    padding: rem(24);
+    background: var(--color-white);
+    border-radius: rem(16);
+    box-shadow: 0 rem(2) rem(12) rgba(0, 0, 0, 0.04);
+
+    @include phone {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: rem(20);
+    }
+
+    &-avatar {
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: rem(80);
+      height: rem(80);
+      font-size: rem(40);
+      background: linear-gradient(135deg, var(--color-grey-100) 0%, var(--color-grey-200) 100%);
+      border-radius: 50%;
+    }
+
+    &-info {
+      flex: 1;
+    }
+
+    &-name {
+      margin-bottom: rem(8);
+      font-size: rem(18);
+      font-weight: 700;
+      color: var(--color-grey-900);
+    }
+
+    &-bio {
+      font-size: rem(14);
+      line-height: 1.6;
+      color: var(--color-grey-600);
+    }
+  }
+
+  // Sidebar
+  &__sidebar {
+    @media (max-width: 900px) {
+      display: none;
+    }
+  }
+
+  &__card {
+    position: sticky;
+    top: rem(100);
+    background: var(--color-white);
+    border-radius: rem(20);
+    box-shadow: 0 rem(4) rem(24) rgba(0, 0, 0, 0.08);
+    overflow: hidden;
+
+    &-image {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    &-content {
+      padding: rem(24);
+    }
+  }
+
+  &__price {
+    display: flex;
+    align-items: center;
+    gap: rem(12);
+    margin-bottom: rem(20);
+
+    &-current {
+      font-size: rem(32);
+      font-weight: 800;
+      color: var(--color-grey-900);
+    }
+
+    &-original {
+      font-size: rem(18);
+      color: var(--color-grey-400);
+      text-decoration: line-through;
+    }
+
+    &-discount {
+      padding: rem(4) rem(10);
+      font-size: rem(13);
+      font-weight: 600;
+      color: var(--color-success);
+      background: rgba(var(--color-success--rgb), 0.1);
+      border-radius: rem(6);
+    }
+  }
+
+  &__guarantee {
+    margin-top: rem(16);
+    margin-bottom: rem(20);
+    padding: rem(12);
+    font-size: rem(13);
+    text-align: center;
+    color: var(--color-grey-600);
+    background: var(--color-grey-50);
+    border-radius: rem(10);
+  }
+
+  &__includes {
+    display: flex;
+    flex-direction: column;
+    gap: rem(12);
+    padding-top: rem(20);
+    border-top: 1px solid var(--color-grey-100);
+
+    &-item {
+      display: flex;
+      align-items: center;
+      gap: rem(12);
+      font-size: rem(14);
+      color: var(--color-grey-700);
+    }
+
+    &-icon {
+      flex-shrink: 0;
+      font-size: rem(18);
+    }
+  }
+}
+
+// Button full width modifier
+.button._full {
+  width: 100%;
+  justify-content: center;
+}

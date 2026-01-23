@@ -110,6 +110,9 @@ class I18nClient {
         el.alt = this.t(key)
       }
     })
+
+    // Mark page as translated to prevent content flash
+    document.documentElement.classList.add('_i18n-ready')
   }
 }
 

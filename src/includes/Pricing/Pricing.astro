@@ -1,0 +1,134 @@
+---
+import Container from '@components/Container/Container'
+import Button from '@ui/Button/Button'
+---
+
+<section class="pricing" id="pricing">
+  <Container className="pricing__container">
+    <div class="pricing__header">
+      <span class="pricing__badge" data-i18n="pricing.badge">Simple Pricing</span>
+      <h2 class="pricing__title">
+        <span data-i18n="pricing.title">Choose Your</span>
+        <span class="pricing__title-gradient" data-i18n="pricing.titleGradient">Perfect Plan</span>
+      </h2>
+      <p class="pricing__subtitle" data-i18n="pricing.subtitle">
+        Start free and scale as you grow. No hidden fees, cancel anytime.
+      </p>
+    </div>
+    
+    <ul class="pricing__grid">
+      <!-- Free Plan -->
+      <li class="pricing__card">
+        <div class="pricing__card-header">
+          <h3 class="pricing__card-name" data-i18n="pricing.plans.free.name">Free</h3>
+          <p class="pricing__card-description" data-i18n="pricing.plans.free.description">Perfect for getting started</p>
+        </div>
+        <div class="pricing__card-price">
+          <span class="pricing__card-currency">$</span>
+          <span class="pricing__card-amount">0</span>
+          <span class="pricing__card-period" data-i18n="pricing.period">/month</span>
+        </div>
+        <ul class="pricing__card-features">
+          <li class="pricing__card-feature" data-i18n="pricing.plans.free.features.1">
+            <span class="pricing__card-feature-icon">✓</span>
+            Access to 5 free courses
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.free.features.2">
+            <span class="pricing__card-feature-icon">✓</span>
+            Basic community access
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.free.features.3">
+            <span class="pricing__card-feature-icon">✓</span>
+            Limited quizzes
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.free.features.4">
+            <span class="pricing__card-feature-icon">✓</span>
+            Email support
+          </li>
+        </ul>
+        <Button as="a" href="#" text="Get Started" mods={['outline', 'lg', 'block']} data-i18n="pricing.btnStart" />
+      </li>
+      
+      <!-- Pro Plan -->
+      <li class="pricing__card _popular">
+        <div class="pricing__card-badge" data-i18n="pricing.popular">Most Popular</div>
+        <div class="pricing__card-header">
+          <h3 class="pricing__card-name" data-i18n="pricing.plans.pro.name">Pro</h3>
+          <p class="pricing__card-description" data-i18n="pricing.plans.pro.description">Best for serious learners</p>
+        </div>
+        <div class="pricing__card-price">
+          <span class="pricing__card-currency">$</span>
+          <span class="pricing__card-amount">29</span>
+          <span class="pricing__card-period" data-i18n="pricing.period">/month</span>
+        </div>
+        <ul class="pricing__card-features">
+          <li class="pricing__card-feature" data-i18n="pricing.plans.pro.features.1">
+            <span class="pricing__card-feature-icon">✓</span>
+            Access to all courses
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.pro.features.2">
+            <span class="pricing__card-feature-icon">✓</span>
+            Full community access
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.pro.features.3">
+            <span class="pricing__card-feature-icon">✓</span>
+            Unlimited quizzes & projects
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.pro.features.4">
+            <span class="pricing__card-feature-icon">✓</span>
+            Certificate of completion
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.pro.features.5">
+            <span class="pricing__card-feature-icon">✓</span>
+            Priority support
+          </li>
+        </ul>
+        <Button as="a" href="#" text="Start Free Trial" mods={['fill', 'lg', 'block']} data-i18n="pricing.btnTrial" />
+      </li>
+      
+      <!-- Enterprise Plan -->
+      <li class="pricing__card">
+        <div class="pricing__card-header">
+          <h3 class="pricing__card-name" data-i18n="pricing.plans.enterprise.name">Enterprise</h3>
+          <p class="pricing__card-description" data-i18n="pricing.plans.enterprise.description">For teams and organizations</p>
+        </div>
+        <div class="pricing__card-price">
+          <span class="pricing__card-currency">$</span>
+          <span class="pricing__card-amount">99</span>
+          <span class="pricing__card-period" data-i18n="pricing.period">/month</span>
+        </div>
+        <ul class="pricing__card-features">
+          <li class="pricing__card-feature" data-i18n="pricing.plans.enterprise.features.1">
+            <span class="pricing__card-feature-icon">✓</span>
+            Everything in Pro
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.enterprise.features.2">
+            <span class="pricing__card-feature-icon">✓</span>
+            Team management dashboard
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.enterprise.features.3">
+            <span class="pricing__card-feature-icon">✓</span>
+            Custom learning paths
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.enterprise.features.4">
+            <span class="pricing__card-feature-icon">✓</span>
+            Advanced analytics
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.enterprise.features.5">
+            <span class="pricing__card-feature-icon">✓</span>
+            Dedicated account manager
+          </li>
+          <li class="pricing__card-feature" data-i18n="pricing.plans.enterprise.features.6">
+            <span class="pricing__card-feature-icon">✓</span>
+            SSO & API access
+          </li>
+        </ul>
+        <Button as="a" href="#" text="Contact Sales" mods={['outline', 'lg', 'block']} data-i18n="pricing.btnContact" />
+      </li>
+    </ul>
+    
+    <p class="pricing__guarantee" data-i18n="pricing.guarantee">
+      🔒 30-day money-back guarantee on all paid plans
+    </p>
+  </Container>
+</section>

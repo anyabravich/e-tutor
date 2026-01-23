@@ -1,5 +1,6 @@
 export { heroStats } from './_hero'
 export { features } from './_features'
-export { courses } from './_courses'
+export { courses, getCourseBySlug } from './_courses'
+export type { Course, CourseModule } from './_courses'
 export { testimonials } from './_testimonials'
 export { navLinks, footerLinks, socialLinks } from './_navigation'

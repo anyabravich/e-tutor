@@ -24,6 +24,23 @@ body {
   // https://transfonter.org/ - включите настройку https://prnt.sc/12rnt6g и переконвертируйте шрифт
 }
 
+// предотвращает дерганье контента при переводе i18n
+html:not(._i18n-ready) body {
+  opacity: 0;
+}
+
+html._i18n-ready body {
+  opacity: 1;
+  transition: opacity 0.1s ease-out;
+}
+
+// fallback для отключенного JS
+@media (scripting: none) {
+  html:not(._i18n-ready) body {
+    opacity: 1;
+  }
+}
+
 body {
   font-family: var(--default-font-family);
   font-size: var(--default-font-size);
@@ -148,4 +165,13 @@ table {
 
 ul {
   @include reset-ul;
+}
+
+// Smooth scroll offset for anchor links (header height)
+section[id] {
+  scroll-margin-top: rem(100);
+
+  @include phone {
+    scroll-margin-top: rem(80);
+  }
 }

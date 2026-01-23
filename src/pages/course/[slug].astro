@@ -1,0 +1,199 @@
+---
+import RootLayout from '@layouts/root/root'
+import Header from '@components/Header/Header'
+import Footer from '@components/Footer/Footer'
+import Container from '@components/Container/Container'
+import Button from '@ui/Button/Button'
+import { courses, getCourseBySlug } from '@shared/mocks'
+import type { Course } from '@shared/mocks'
+
+import './course.scss'
+
+export function getStaticPaths() {
+  return courses.map((course) => ({
+    params: { slug: course.slug },
+    props: { course }
+  }))
+}
+
+interface Props {
+  course: Course
+}
+
+const { course } = Astro.props
+
+const levelLabels = {
+  beginner: 'Beginner',
+  intermediate: 'Intermediate', 
+  advanced: 'Advanced'
+}
+---
+
+<RootLayout title={`${course.categoryKey} - e-tutor`}>
+  <Header />
+  
+  <main class="page__main">
+    <section class={`course-detail _${course.category}`}>
+      <Container className="course-detail__container">
+        <div class="course-detail__layout">
+          <div class="course-detail__content">
+            <a href="/courses" class="course-detail__back">
+              <span class="course-detail__back-icon">←</span>
+              <span data-i18n="courseDetail.backToCourses">Back to Courses</span>
+            </a>
+            
+            <div class="course-detail__hero">
+              <span class="course-detail__category" data-i18n={`courses.items.${course.categoryKey}.category`}>
+                {course.category}
+              </span>
+              <h1 class="course-detail__title" data-i18n={`courses.items.${course.categoryKey}.title`}>
+                Course Title
+              </h1>
+              <p class="course-detail__description" data-i18n={`courseDetail.items.${course.categoryKey}.fullDescription`}>
+                Learn everything you need to know in this comprehensive course.
+              </p>
+              
+              <div class="course-detail__meta">
+                <div class="course-detail__meta-item">
+                  <span class="course-detail__meta-icon">⭐</span>
+                  <span class="course-detail__meta-value">{course.rating}</span>
+                  <span class="course-detail__meta-label">({course.students.toLocaleString()} <span data-i18n="courses.students">students</span>)</span>
+                </div>
+                <div class="course-detail__meta-item">
+                  <span class="course-detail__meta-icon">👤</span>
+                  <span data-i18n="courses.by">by</span>
+                  <span class="course-detail__meta-value" data-i18n={`courses.items.${course.categoryKey}.instructor`}>Instructor</span>
+                </div>
+              </div>
+              
+              <div class="course-detail__stats">
+                <div class="course-detail__stat">
+                  <span class="course-detail__stat-icon">🕐</span>
+                  <span class="course-detail__stat-value">{course.duration}</span>
+                  <span class="course-detail__stat-label" data-i18n="courseDetail.duration">Duration</span>
+                </div>
+                <div class="course-detail__stat">
+                  <span class="course-detail__stat-icon">📚</span>
+                  <span class="course-detail__stat-value">{course.lessonsCount}</span>
+                  <span class="course-detail__stat-label" data-i18n="courseDetail.lessons">Lessons</span>
+                </div>
+                <div class="course-detail__stat">
+                  <span class="course-detail__stat-icon">📊</span>
+                  <span class="course-detail__stat-value" data-i18n={`courseDetail.levels.${course.level}`}>{levelLabels[course.level]}</span>
+                  <span class="course-detail__stat-label" data-i18n="courseDetail.level">Level</span>
+                </div>
+              </div>
+            </div>
+            
+            <div class="course-detail__image-mobile">
+              <img src={course.image.src} alt="" />
+            </div>
+            
+            <section class="course-detail__section">
+              <h2 class="course-detail__section-title" data-i18n="courseDetail.whatYouLearn">What You'll Learn</h2>
+              <ul class="course-detail__features">
+                {Array.from({ length: course.featuresCount }, (_, i) => (
+                  <li class="course-detail__feature">
+                    <span class="course-detail__feature-icon">✓</span>
+                    <span data-i18n={`courseDetail.items.${course.categoryKey}.features.${i + 1}`}>Feature {i + 1}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+            
+            <section class="course-detail__section">
+              <h2 class="course-detail__section-title" data-i18n="courseDetail.curriculum">Course Curriculum</h2>
+              <div class="course-detail__modules">
+                {course.modules.map((module, index) => (
+                  <details class="course-detail__module" open={index === 0}>
+                    <summary class="course-detail__module-header">
+                      <span class="course-detail__module-number">{String(index + 1).padStart(2, '0')}</span>
+                      <span class="course-detail__module-title" data-i18n={`courseDetail.items.${module.titleKey}`}>Module Title</span>
+                      <span class="course-detail__module-lessons">{module.lessons} <span data-i18n="courseDetail.lessonsShort">lessons</span></span>
+                      <span class="course-detail__module-arrow">▸</span>
+                    </summary>
+                    <div class="course-detail__module-content">
+                      <p class="course-detail__module-description" data-i18n={`courseDetail.items.${module.titleKey}Desc`}>
+                        Module description
+                      </p>
+                    </div>
+                  </details>
+                ))}
+              </div>
+              <p class="course-detail__total">
+                <strong>{course.modules.length}</strong> <span data-i18n="courseDetail.modulesTotal">modules</span> • 
+                <strong>{course.lessonsCount}</strong> <span data-i18n="courseDetail.lessonsTotal">lessons</span> • 
+                <strong>{course.duration}</strong> <span data-i18n="courseDetail.totalDuration">total</span>
+              </p>
+            </section>
+            
+            <section class="course-detail__section">
+              <h2 class="course-detail__section-title" data-i18n="courseDetail.aboutInstructor">About the Instructor</h2>
+              <div class="course-detail__instructor">
+                <div class="course-detail__instructor-avatar">
+                  <span>👨‍🏫</span>
+                </div>
+                <div class="course-detail__instructor-info">
+                  <h3 class="course-detail__instructor-name" data-i18n={`courses.items.${course.categoryKey}.instructor`}>Instructor Name</h3>
+                  <p class="course-detail__instructor-bio" data-i18n={`courseDetail.items.${course.categoryKey}.instructorBio`}>
+                    Industry expert with years of experience teaching thousands of students worldwide.
+                  </p>
+                </div>
+              </div>
+            </section>
+          </div>
+          
+          <aside class="course-detail__sidebar">
+            <div class="course-detail__card">
+              <div class="course-detail__card-image">
+                <img src={course.image.src} alt="" />
+              </div>
+              <div class="course-detail__card-content">
+                <div class="course-detail__price">
+                  <span class="course-detail__price-current">${course.price}</span>
+                  <span class="course-detail__price-original">
+                    <span class="visually-hidden" data-i18n="courses.originalPrice">Original price:</span>${course.originalPrice}
+                  </span>
+                  <span class="course-detail__price-discount">
+                    {Math.round((1 - course.price / course.originalPrice) * 100)}% <span data-i18n="courseDetail.off">off</span>
+                  </span>
+                </div>
+                
+                <Button as="a" href="#" text="Enroll Now" mods={['fill', 'lg', 'full']} data-i18n="courses.enrollNow" />
+                
+                <p class="course-detail__guarantee" data-i18n="courseDetail.moneyBack">
+                  30-Day Money-Back Guarantee
+                </p>
+                
+                <ul class="course-detail__includes">
+                  <li class="course-detail__includes-item">
+                    <span class="course-detail__includes-icon">📹</span>
+                    <span>{course.duration} <span data-i18n="courseDetail.onDemandVideo">on-demand video</span></span>
+                  </li>
+                  <li class="course-detail__includes-item">
+                    <span class="course-detail__includes-icon">📄</span>
+                    <span>{course.lessonsCount} <span data-i18n="courseDetail.downloadableResources">downloadable resources</span></span>
+                  </li>
+                  <li class="course-detail__includes-item">
+                    <span class="course-detail__includes-icon">♾️</span>
+                    <span data-i18n="courseDetail.fullAccess">Full lifetime access</span>
+                  </li>
+                  <li class="course-detail__includes-item">
+                    <span class="course-detail__includes-icon">📱</span>
+                    <span data-i18n="courseDetail.mobileAccess">Access on mobile and TV</span>
+                  </li>
+                  <li class="course-detail__includes-item">
+                    <span class="course-detail__includes-icon">🏆</span>
+                    <span data-i18n="courseDetail.certificate">Certificate of completion</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </Container>
+    </section>
+  </main>
+  
+  <Footer />
+</RootLayout>

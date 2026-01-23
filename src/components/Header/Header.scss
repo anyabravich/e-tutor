@@ -123,6 +123,12 @@
       @include hover {
         color: var(--color-primary);
       }
+
+      &._active {
+        color: var(--color-primary);
+        font-weight: 600;
+        pointer-events: none;
+      }
     }
 
     &-actions {
