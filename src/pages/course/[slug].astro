@@ -9,7 +9,7 @@ import type { Course } from '@shared/mocks'
 
 import './course.scss'
 
-export function getStaticPaths() {
+export async function getStaticPaths() {
   return courses.map((course) => ({
     params: { slug: course.slug },
     props: { course }

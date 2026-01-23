@@ -10,7 +10,7 @@ export default defineConfig({
   publicDir: './public',
   build: {
     assets: 'assets',
-    format: 'file', // вытаскивает вложенные страницы в корень src/pages/subpage/subpage.html => dist/subpage.html
+    format: 'directory', // генерирует страницы как /page/index.html для совместимости с динамическими маршрутами
     inlineStylesheets: 'never' // запрещает инлайн стилей
   },
   image: {
